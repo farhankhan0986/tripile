@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -15,9 +15,13 @@ const dmSans = DM_Sans({
   weight: ["300", "400", "500"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#5C1828",
+};
+
 export const metadata: Metadata = {
-  title: "Tripile",
-  description: "Travel the world with confidence.",
+  title: "Tripile - Travel with Confidence",
+  description: "Premium US travel booking for the 50+ traveler. Real agents, no hidden fees. Flights and hotels by phone.",
 };
 
 export default function RootLayout({

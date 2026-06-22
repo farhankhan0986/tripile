@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <defs>
+    <radialGradient id="bg" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#7A1F35"/>
+      <stop offset="100%" stop-color="#3D0E1A"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8C96A"/>
+      <stop offset="40%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#A07830"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect width="180" height="180" rx="40" fill="url(#bg)"/>
+
+  <!-- Subtle inner border -->
+  <rect x="5" y="5" width="170" height="170" rx="36" fill="none" stroke="#C9A84C" stroke-width="2.5" opacity="0.35"/>
+
+  <!-- Crossbar -->
+  <rect x="42" y="50" width="96" height="13" rx="3" fill="url(#gold)"/>
+
+  <!-- Stem -->
+  <path d="M80 63 H100 V125 Q90 131 80 125 Z" fill="url(#gold)"/>
+
+  <!-- Left serif foot -->
+  <rect x="70" y="121" width="22" height="8" rx="2.5" fill="url(#gold)"/>
+  <!-- Right serif foot -->
+  <rect x="89" y="121" width="22" height="8" rx="2.5" fill="url(#gold)"/>
+
+  <!-- Left crossbar serif cap -->
+  <rect x="42" y="50" width="13" height="18" rx="2" fill="url(#gold)" opacity="0.55"/>
+  <!-- Right crossbar serif cap -->
+  <rect x="125" y="50" width="13" height="18" rx="2" fill="url(#gold)" opacity="0.55"/>
+</svg>

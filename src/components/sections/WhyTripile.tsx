@@ -4,7 +4,7 @@ import { Phone, ShieldCheck, Clock3, MapPin, Star } from "lucide-react";
 import Button from "@/components/ui/Button";
 
 const stats = [
-  { value: "22", label: "Years in business" },
+  { value: "4+", label: "Years in business" },
   { value: "48k+", label: "Trips booked" },
   { value: "4.97", label: "Average rating" },
 ];
@@ -49,7 +49,7 @@ export default function WhyTripile() {
 
             {/* Headline */}
             <h2 className="font-display font-medium text-[52px] text-warm-dark tracking-[-0.01em] leading-[1.05] mb-[20px]">
-              22 years of getting it right
+              4+ years of getting it right
             </h2>
 
             {/* Sub-copy */}

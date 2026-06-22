@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { X, Phone } from "lucide-react";
-import Button from "@/components/ui/Button";
+import { X, Phone, Clock, Calendar, MapPin, Star, ArrowUpRight } from "lucide-react";
 
 type Destination = {
   city: string;
@@ -131,7 +130,7 @@ const destinations: Destination[] = [
     hotelsFrom: 119,
     bestTime: "April to June",
     flightTime: "2h from New York",
-    image: "https://plus.unsplash.com/premium_photo-1670176447319-c5622f2fb996?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://plus.unsplash.com/premium_photo-1670176447319-c5622f2fb996?q=80&w=1170&auto=format&fit=crop",
     snippet: "Live music on every corner, world-class BBQ, and the honky-tonk spirit of Music City.",
     description: "Nashville pulses with live music spilling out of legendary venues on Broadway, Michelin-star dining, and a thriving arts scene. The Bluebird Cafe, Country Music Hall of Fame, and rooftop bars with skyline views make it an electrifying getaway.",
     highlights: ["Broadway Honky-Tonks", "Bluebird Cafe", "Country Music Hall of Fame", "Hot Chicken", "Centennial Park"],
@@ -144,7 +143,7 @@ const destinations: Destination[] = [
     hotelsFrom: 169,
     bestTime: "May to October",
     flightTime: "5h 30m from New York",
-    image: "https://images.unsplash.com/photo-1519954352454-2d5a7353e277?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://images.unsplash.com/photo-1519954352454-2d5a7353e277?q=80&w=1074&auto=format&fit=crop",
     snippet: "Year-round sunshine, world-class craft beer, and some of California's most beautiful beaches.",
     description: "San Diego offers the perfect California escape with miles of pristine beaches, the world-famous San Diego Zoo, a booming craft beer scene, and the historic Gaslamp Quarter. Mild year-round weather makes every season the right season.",
     highlights: ["Balboa Park", "San Diego Zoo", "Gaslamp Quarter", "Torrey Pines", "La Jolla Cove"],
@@ -157,8 +156,8 @@ const destinations: Destination[] = [
     hotelsFrom: 149,
     bestTime: "March to May",
     flightTime: "1h 45m from New York",
-    image: "https://images.unsplash.com/photo-1623608103487-3953899aff0b?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    snippet: "Pastel antebellum architecture, James Beard–awarded restaurants, and breathtaking plantation gardens.",
+    image: "https://images.unsplash.com/photo-1623608103487-3953899aff0b?q=80&w=1074&auto=format&fit=crop",
+    snippet: "Pastel antebellum architecture, James Beard-awarded restaurants, and breathtaking plantation gardens.",
     description: "Charleston enchants with its rainbow-colored Rainbow Row, cobblestone streets, and exceptional Lowcountry cuisine. Historic plantations, sailboat tours on the harbor, and the laid-back Southern pace make it one of America's most beloved cities.",
     highlights: ["Rainbow Row", "Fort Sumter", "Magnolia Plantation", "King Street Dining", "Folly Beach"],
   },
@@ -170,12 +169,145 @@ const destinations: Destination[] = [
     hotelsFrom: 159,
     bestTime: "December to April",
     flightTime: "3h 30m from New York",
-    image: "https://plus.unsplash.com/premium_photo-1661962694871-5422f8c4c506?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "https://plus.unsplash.com/premium_photo-1661962694871-5422f8c4c506?q=80&w=1170&auto=format&fit=crop",
     snippet: "Bioluminescent bays, Old San Juan's colorful forts, and no passport required for US travelers.",
     description: "Puerto Rico dazzles with the cobblestone streets and colorful fortresses of Old San Juan, bioluminescent bays that glow electric blue at night, and stunning beaches from Condado to Rincon. As a US territory, no passport is required.",
     highlights: ["Old San Juan", "El Yunque Rainforest", "Bioluminescent Bay", "Condado Beach", "El Morro Fort"],
   },
 ];
+
+// Layout config: 3 featured (large) + 3 medium + 6 small
+const FEATURED = 3;
+const MEDIUM = 3;
+
+function DestCard({
+  dest,
+  size,
+  onClick,
+}: {
+  dest: Destination;
+  size: "large" | "medium" | "small";
+  onClick: () => void;
+}) {
+  const heights = { large: 480, medium: 360, small: 240 };
+  const titleSizes = { large: "32px", medium: "24px", small: "19px" };
+
+  return (
+    <div
+      onClick={onClick}
+      className="relative overflow-hidden rounded-[20px] cursor-pointer group"
+      style={{
+        height: `${heights[size]}px`,
+        boxShadow: "0 6px 32px rgba(26,15,13,0.14)",
+      }}
+    >
+      {/* Photo */}
+      <img
+        src={dest.image}
+        alt={`${dest.city}, ${dest.region}`}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+      />
+
+      {/* Base gradient  always present */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(10,4,3,0.92) 0%, rgba(10,4,3,0.45) 40%, rgba(10,4,3,0.08) 75%, transparent 100%)",
+        }}
+      />
+
+      {/* Hover burgundy tint */}
+      <div className="absolute inset-0 bg-burg-deep/0 group-hover:bg-burg-deep/12 transition-colors duration-500" />
+
+      {/* Gold price pill  top right */}
+      <div
+        className="absolute top-[16px] right-[16px] px-[12px] py-[5px] rounded-full font-body font-semibold tracking-[0.06em] uppercase"
+        style={{
+          fontSize: "10px",
+          background: "linear-gradient(120deg, #C9A84C 0%, #E8C96A 60%, #C9A84C 100%)",
+          color: "#1A0F0D",
+          boxShadow: "0 2px 10px rgba(201,168,76,0.30)",
+        }}
+      >
+        from ${dest.price}
+      </div>
+
+      {/* Bottom content */}
+      <div
+        className="absolute bottom-0 left-0 right-0"
+        style={{ padding: size === "small" ? "14px" : "22px" }}
+      >
+        {/* Region label  hidden on small cards */}
+        {size !== "small" && (
+          <p
+            className="font-body uppercase tracking-[0.10em] mb-[5px]"
+            style={{ fontSize: "10px", color: "rgba(255,255,255,0.50)" }}
+          >
+            {dest.region}, {dest.country}
+          </p>
+        )}
+
+        {/* City name */}
+        <p
+          className="font-display font-semibold text-white leading-[1.0] mb-[6px]"
+          style={{ fontSize: titleSizes[size], letterSpacing: "-0.01em" }}
+        >
+          {dest.city}
+        </p>
+
+        {/* Snippet  large only always visible, medium on hover */}
+        {size !== "small" && (
+          <p
+            className={`font-body text-white/70 leading-[1.55] mb-[14px] line-clamp-2 transition-all duration-400 ${
+              size === "large"
+                ? "opacity-100"
+                : "opacity-0 group-hover:opacity-100 max-h-0 group-hover:max-h-[52px] overflow-hidden"
+            }`}
+            style={{ fontSize: "13px" }}
+          >
+            {dest.snippet}
+          </p>
+        )}
+
+        {/* Bottom row  full on large/medium, just explore on small */}
+        <div className="flex items-center justify-between">
+          {size !== "small" ? (
+            <div className="flex items-center gap-[5px]">
+              <span className="font-body uppercase tracking-[0.05em]" style={{ fontSize: "10px", color: "rgba(255,255,255,0.40)" }}>
+                Hotels
+              </span>
+              <span className="font-display font-medium" style={{ fontSize: "14px", color: "rgba(255,255,255,0.85)" }}>
+                from ${dest.hotelsFrom}
+              </span>
+            </div>
+          ) : (
+            <p
+              className="font-body uppercase tracking-[0.06em]"
+              style={{ fontSize: "9px", color: "rgba(255,255,255,0.40)" }}
+            >
+              {dest.region}
+            </p>
+          )}
+
+          <button
+            onClick={(e) => { e.stopPropagation(); onClick(); }}
+            className="flex items-center gap-[4px] font-body font-medium text-white rounded-full transition-all duration-300 backdrop-blur-sm group-hover:bg-white/25"
+            style={{
+              fontSize: size === "small" ? "11px" : "12px",
+              padding: size === "small" ? "4px 10px" : "6px 13px",
+              background: "rgba(255,255,255,0.12)",
+              border: "1px solid rgba(255,255,255,0.22)",
+            }}
+          >
+            Explore
+            <ArrowUpRight size={10} />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Destinations() {
   const [selected, setSelected] = useState<Destination | null>(null);
@@ -184,250 +316,342 @@ export default function Destinations() {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") setSelected(null);
     }
-    if (selected) document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    if (selected) {
+      document.addEventListener("keydown", onKey);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
   }, [selected]);
+
+  const featured = destinations.slice(0, FEATURED);
+  const medium = destinations.slice(FEATURED, FEATURED + MEDIUM);
+  const small = destinations.slice(FEATURED + MEDIUM);
 
   return (
     <>
-      <section className="bg-ivory py-[100px]">
+      <section
+        className="py-[110px]"
+        style={{ background: "linear-gradient(180deg, #FAF7F2 0%, #F2EBE1 100%)" }}
+      >
         <div className="max-w-[1280px] mx-auto px-20">
 
-          {/* Heading */}
-          <div className="mb-[56px]">
-            <p className="font-body text-[11px] uppercase tracking-[0.12em] text-warm-mid mb-[12px]">
-              Where we go
+          {/* ── Section header ── */}
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-[20px] mb-[52px]">
+            <div>
+              <p className="font-body text-[11px] uppercase tracking-[0.14em] text-warm-mid mb-[12px]">
+                Where we go
+              </p>
+              <h2
+                className="font-display font-medium text-warm-dark leading-[1.02] tracking-[-0.02em]"
+                style={{ fontSize: "clamp(36px, 5vw, 52px)" }}
+              >
+                Popular destinations
+              </h2>
+            </div>
+            <p className="font-body text-[14px] text-warm-mid leading-[1.72] max-w-[320px] lg:text-right pb-[2px]">
+              Real agents who&apos;ve been there. Every destination,
+              personally recommended.
             </p>
-            <h2 className="font-display font-medium text-[52px] text-warm-dark leading-[1.05] tracking-[-0.01em]">
-              Popular destinations
-            </h2>
           </div>
 
-          {/* Cards grid 4-col editorial: first 4 tall (Miami), last 4 short (Sedona) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[200px] gap-[16px]">
-            {destinations.map((dest, i) => {
-              // First 4 cards = tall (row-span-2, Miami style), last 4 = short (row-span-1, Sedona style)
-              const isFeatured = i < 4;
-              return (
-                <div
-                  key={dest.city}
-                  onClick={() => setSelected(dest)}
-                  className={`relative overflow-hidden rounded-[18px] cursor-pointer group ${isFeatured ? "row-span-2" : "row-span-1"}`}
-                  style={{ boxShadow: "0 4px 24px rgba(26,15,13,0.13)" }}
-                >
-                  {/* Background image */}
-                  <img
-                    src={dest.image}
-                    alt={`${dest.city}, ${dest.region}`}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.07]"
-                  />
+          {/* ── Featured row: 3 large cards ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-[14px] mb-[14px]">
+            {featured.map((dest) => (
+              <DestCard
+                key={dest.city}
+                dest={dest}
+                size="large"
+                onClick={() => setSelected(dest)}
+              />
+            ))}
+          </div>
 
-                  {/* Dark gradient overlay always visible at bottom */}
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: "linear-gradient(to top, rgba(15,6,4,0.88) 0%, rgba(15,6,4,0.30) 45%, transparent 100%)"
-                    }}
-                  />
+          {/* ── Medium row: 3 medium cards ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-[14px] mb-[14px]">
+            {medium.map((dest) => (
+              <DestCard
+                key={dest.city}
+                dest={dest}
+                size="medium"
+                onClick={() => setSelected(dest)}
+              />
+            ))}
+          </div>
 
-                  {/* Hover overlay subtle tint on hover */}
-                  <div
-                    className="absolute inset-0 bg-burg-deep/0 group-hover:bg-burg-deep/10 transition-colors duration-400"
-                  />
+          {/* ── Small row: remaining as 2-col then 3-col ── */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[14px]">
+            {small.map((dest) => (
+              <DestCard
+                key={dest.city}
+                dest={dest}
+                size="small"
+                onClick={() => setSelected(dest)}
+              />
+            ))}
+          </div>
 
-                  {/* Price badge top-right */}
-                  <div
-                    className="absolute top-[14px] right-[14px] px-[12px] py-[6px] rounded-full text-[11px] font-body font-medium tracking-[0.06em] uppercase"
-                    style={{
-                      background: "rgba(201,168,76,0.92)",
-                      color: "#1A0F0D",
-                      backdropFilter: "blur(6px)",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.18)"
-                    }}
-                  >
-                    from ${dest.price}
-                  </div>
-
-                  {/* Content bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 p-[20px]">
-                    {/* City name */}
-                    <p
-                      className="font-display font-semibold text-white leading-[1.1] mb-[2px]"
-                      style={{ fontSize: isFeatured ? "28px" : "22px" }}
-                    >
-                      {dest.city}
-                    </p>
-
-                    {/* Region */}
-                    <p className="font-body text-[12px] text-white/70 tracking-[0.06em] uppercase mb-[10px]">
-                      {dest.region}, {dest.country}
-                    </p>
-
-                    {/* Snippet only visible on featured or on hover */}
-                    <p
-                      className={`font-body text-[13px] text-white/80 leading-[1.55] mb-[14px] transition-all duration-400 ${
-                        isFeatured
-                          ? "line-clamp-2"
-                          : "max-h-0 opacity-0 group-hover:max-h-[60px] group-hover:opacity-100 overflow-hidden"
-                      }`}
-                    >
-                      {dest.snippet}
-                    </p>
-
-                    {/* Bottom row: hotels price + CTA */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-[6px]">
-                        <span className="font-body text-[11px] text-white/50 uppercase tracking-[0.05em]">Hotels</span>
-                        <span className="font-display font-medium text-[15px] text-white/90">from ${dest.hotelsFrom}</span>
-                      </div>
-                      <button
-                        onClick={(e) => { e.stopPropagation(); setSelected(dest); }}
-                        className="font-body text-[12px] font-medium text-white bg-white/15 hover:bg-white/25 border border-white/25 rounded-full px-[14px] py-[6px] transition-all duration-250 backdrop-blur-sm"
-                      >
-                        Explore →
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          {/* ── Bottom trust nudge ── */}
+          <div className="flex items-center justify-center gap-[8px] mt-[48px]">
+            <div className="flex gap-[2px]">
+              {[1,2,3,4,5].map((s) => (
+                <Star key={s} size={13} fill="#C9A84C" color="#C9A84C" />
+              ))}
+            </div>
+            <p className="font-body text-[13px] text-warm-mid">
+              <span className="font-semibold text-warm-dark">48,000+</span> trips booked  every one by a real agent
+            </p>
           </div>
 
         </div>
       </section>
 
-      {/* Detail modal */}
+      {/* ── Detail Modal ── */}
       {selected && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
-          style={{ background: "rgba(15,6,4,0.75)", backdropFilter: "blur(8px)" }}
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-6"
+          style={{ background: "rgba(8,3,2,0.85)", backdropFilter: "blur(14px)" }}
           onClick={() => setSelected(null)}
         >
           <div
-            className="relative bg-white w-full max-w-[680px] overflow-hidden max-h-[92vh] flex flex-col"
-            style={{ borderRadius: "24px", boxShadow: "0 24px 80px rgba(15,6,4,0.45)" }}
+            className="relative w-full sm:max-w-[900px] max-h-[96vh] sm:max-h-[88vh] flex flex-col sm:flex-row overflow-hidden"
+            style={{
+              borderRadius: "28px 28px 0 0",
+              ...(typeof window !== "undefined" && window.innerWidth >= 640
+                ? { borderRadius: "28px" }
+                : {}),
+              boxShadow: "0 40px 120px rgba(10,4,3,0.65), 0 0 0 1px rgba(201,168,76,0.14)",
+              background: "#FAF7F2",
+            }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* ── Hero image with text overlay ── */}
-            <div className="relative h-[320px] shrink-0 overflow-hidden">
+            {/* ── Left: Photo panel ── */}
+            <div className="relative w-full sm:w-[42%] shrink-0 h-[260px] sm:h-auto overflow-hidden">
               <img
                 src={selected.image}
                 alt={selected.city}
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{ filter: "brightness(0.88)" }}
               />
-              {/* Gradient overlay */}
+
+              {/* Cinematic gradient */}
               <div
                 className="absolute inset-0"
-                style={{ background: "linear-gradient(to top, rgba(15,6,4,0.82) 0%, rgba(15,6,4,0.15) 55%, transparent 100%)" }}
+                style={{
+                  background:
+                    "linear-gradient(to top, rgba(8,3,2,0.95) 0%, rgba(8,3,2,0.50) 35%, rgba(8,3,2,0.10) 65%, transparent 100%)",
+                }}
+              />
+
+              {/* Right edge fade (bleeds into right panel) */}
+              <div
+                className="absolute inset-y-0 right-0 w-[60px] hidden sm:block"
+                style={{
+                  background: "linear-gradient(to right, transparent, #FAF7F2)",
+                }}
               />
 
               {/* Close button */}
               <button
                 onClick={() => setSelected(null)}
                 aria-label="Close"
-                className="absolute top-[16px] right-[16px] w-[38px] h-[38px] rounded-full flex items-center justify-center transition-all duration-200 hover:scale-105"
-                style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.25)" }}
+                className="absolute top-[16px] right-[16px] sm:right-[24px] w-[38px] h-[38px] rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+                style={{
+                  background: "rgba(255,255,255,0.12)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(255,255,255,0.20)",
+                }}
               >
-                <X size={16} color="#fff" />
+                <X size={14} color="#fff" strokeWidth={2.5} />
               </button>
 
-              {/* Price badge */}
+              {/* Gold price badge */}
               <div
-                className="absolute top-[16px] left-[16px] px-[14px] py-[7px] rounded-full font-body text-[11px] font-semibold tracking-[0.06em] uppercase"
-                style={{ background: "rgba(201,168,76,0.92)", color: "#1A0F0D", backdropFilter: "blur(6px)" }}
+                className="absolute top-[16px] left-[16px] flex items-center gap-[5px] px-[12px] py-[6px] rounded-full font-body font-semibold tracking-[0.06em] uppercase"
+                style={{
+                  fontSize: "10px",
+                  background: "linear-gradient(120deg, #C9A84C 0%, #E8C96A 60%, #C9A84C 100%)",
+                  color: "#1A0F0D",
+                  boxShadow: "0 2px 12px rgba(201,168,76,0.35)",
+                }}
               >
-                Flights from ${selected.price}
+                ✦ from ${selected.price}
               </div>
 
-              {/* City name burned into image */}
-              <div className="absolute bottom-0 left-0 right-0 px-[28px] pb-[24px]">
-                <p className="font-body text-[11px] uppercase tracking-[0.12em] text-white/60 mb-[4px]">
-                  {selected.region}, {selected.country}
+              {/* City name burned into photo */}
+              <div className="absolute bottom-0 left-0 right-0 px-[24px] pb-[24px]">
+                <p
+                  className="font-body uppercase tracking-[0.12em] mb-[5px]"
+                  style={{ fontSize: "10px", color: "rgba(255,255,255,0.45)" }}
+                >
+                  {selected.region} · {selected.country}
                 </p>
-                <h2 className="font-display font-semibold text-[44px] text-white leading-[1.0]">
+                <h2
+                  className="font-display font-semibold text-white leading-[0.95]"
+                  style={{ fontSize: "clamp(30px, 5vw, 44px)", letterSpacing: "-0.02em" }}
+                >
                   {selected.city}
                 </h2>
               </div>
             </div>
 
-            {/* ── Scrollable body ── */}
-            <div className="flex-1 overflow-y-auto">
+            {/* ── Right: Content panel ── */}
+            <div className="flex-1 flex flex-col overflow-hidden">
 
-              {/* Stat strip */}
-              <div
-                className="grid grid-cols-4 border-b"
-                style={{ borderColor: "#EDE0CC" }}
-              >
-                {[
-                  { label: "Flights from", value: `$${selected.price}` },
-                  { label: "Hotels from", value: `$${selected.hotelsFrom}/night` },
-                  { label: "Best time", value: selected.bestTime },
-                  { label: "Flight time", value: selected.flightTime },
-                ].map(({ label, value }, i) => (
-                  <div
-                    key={label}
-                    className="flex flex-col items-center justify-center py-[18px] px-[8px] text-center"
-                    style={{ borderRight: i < 3 ? "1px solid #EDE0CC" : "none" }}
-                  >
-                    <p className="font-body text-[10px] uppercase tracking-[0.09em] text-warm-mid mb-[4px]">{label}</p>
-                    <p
-                      className="font-display font-semibold leading-none"
-                      style={{ fontSize: i < 2 ? "18px" : "13px", color: i < 2 ? "#5C1828" : "#1A0F0D" }}
-                    >
-                      {value}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              {/* Scrollable area */}
+              <div className="flex-1 overflow-y-auto px-[28px] pt-[28px] pb-[4px]">
 
-              {/* Description */}
-              <div className="px-[28px] pt-[24px] pb-[8px]">
-                <p className="font-body text-[15px] text-warm-mid leading-[1.75]">
-                  {selected.description}
+                {/* Snippet */}
+                <p
+                  className="font-display italic leading-[1.55] mb-[24px]"
+                  style={{ fontSize: "17px", color: "#6B5244" }}
+                >
+                  &ldquo;{selected.snippet}&rdquo;
                 </p>
-              </div>
 
-              {/* Highlights */}
-              <div className="px-[28px] pt-[20px] pb-[28px]">
-                <p className="font-body text-[11px] uppercase tracking-[0.10em] text-warm-mid mb-[14px]">
-                  Top highlights
-                </p>
-                <div className="flex flex-wrap gap-[8px]">
-                  {selected.highlights.map((h, i) => (
-                    <span
-                      key={h}
-                      className="font-body text-[13px] font-medium px-[16px] py-[8px] rounded-full flex items-center gap-[6px]"
+                {/* ── Stat tiles ── */}
+                <div className="grid grid-cols-2 gap-[10px] mb-[24px]">
+                  {[
+                    { icon: MapPin, label: "Flights from", value: `$${selected.price}`, sub: "per person", burg: true },
+                    { icon: MapPin, label: "Hotels from", value: `$${selected.hotelsFrom}`, sub: "per night", burg: true },
+                    { icon: Calendar, label: "Best time", value: selected.bestTime, sub: null, burg: false },
+                    { icon: Clock, label: "Flight time", value: selected.flightTime, sub: null, burg: false },
+                  ].map(({ icon: Icon, label, value, sub, burg }) => (
+                    <div
+                      key={label}
+                      className="flex flex-col items-start rounded-[14px] px-[14px] py-[14px] gap-[8px]"
                       style={{
-                        background: i === 0 ? "#5C1828" : "#F5EAED",
-                        color: i === 0 ? "#fff" : "#5C1828",
+                        background: burg ? "rgba(92,24,40,0.05)" : "#fff",
+                        border: `1px solid ${burg ? "rgba(92,24,40,0.10)" : "#EDE0CC"}`,
                       }}
                     >
-                      {i === 0 && <span className="text-[10px]">★</span>}
-                      {h}
-                    </span>
+                      {/* Icon */}
+                      <div
+                        className="w-[28px] h-[28px] rounded-[8px] flex items-center justify-center shrink-0"
+                        style={{ background: burg ? "#F5EAED" : "#FAF7F2" }}
+                      >
+                        <Icon size={12} style={{ color: burg ? "#5C1828" : "#A89282" }} />
+                      </div>
+                      {/* Label + value stacked */}
+                      <div className="flex flex-col gap-[3px]">
+                        <p
+                          className="font-body uppercase tracking-[0.08em]"
+                          style={{ fontSize: "9px", color: "#A89282" }}
+                        >
+                          {label}
+                        </p>
+                        <p
+                          className="font-display font-semibold leading-[1.1]"
+                          style={{
+                            fontSize: burg ? "20px" : "12px",
+                            color: burg ? "#5C1828" : "#1A0F0D",
+                            letterSpacing: burg ? "-0.01em" : "0",
+                          }}
+                        >
+                          {value}
+                        </p>
+                        {sub && (
+                          <p className="font-body" style={{ fontSize: "9px", color: "#A89282" }}>{sub}</p>
+                        )}
+                      </div>
+                    </div>
                   ))}
+                </div>
+
+                {/* Description */}
+                <p
+                  className="font-body leading-[1.78] mb-[24px]"
+                  style={{ fontSize: "14px", color: "#6B5244" }}
+                >
+                  {selected.description}
+                </p>
+
+                {/* Highlights */}
+                <div className="mb-[8px]">
+                  <div className="flex items-center gap-[10px] mb-[12px]">
+                    <span
+                      className="font-body uppercase tracking-[0.12em]"
+                      style={{ fontSize: "9px", color: "#A89282" }}
+                    >
+                      Top highlights
+                    </span>
+                    <div className="flex-1 h-px" style={{ background: "#EDE0CC" }} />
+                  </div>
+                  <div className="flex flex-wrap gap-[7px]">
+                    {selected.highlights.map((h, i) => (
+                      <span
+                        key={h}
+                        className="font-body font-medium flex items-center gap-[6px] px-[13px] py-[7px] rounded-full"
+                        style={{
+                          fontSize: "12px",
+                          background: i === 0
+                            ? "linear-gradient(120deg, #5C1828 0%, #8B2A3F 100%)"
+                            : "#F5EAED",
+                          color: i === 0 ? "#fff" : "#5C1828",
+                          boxShadow: i === 0 ? "0 2px 10px rgba(92,24,40,0.28)" : "none",
+                          border: i === 0 ? "none" : "1px solid rgba(92,24,40,0.09)",
+                        }}
+                      >
+                        {i === 0 && <span style={{ color: "#C9A84C", fontSize: "10px" }}>★</span>}
+                        {h}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Sticky CTA footer ── */}
+              <div
+                className="shrink-0 px-[28px] py-[16px]"
+                style={{
+                  borderTop: "1px solid #EDE0CC",
+                  background: "rgba(250,247,242,0.97)",
+                  backdropFilter: "blur(16px)",
+                }}
+              >
+                {/* Trust line */}
+                <p
+                  className="font-body mb-[10px]"
+                  style={{ fontSize: "11px", color: "#A89282" }}
+                >
+                  Real agents · No hidden fees ·{" "}
+                  <span style={{ color: "#1A0F0D", fontWeight: 500 }}>1-800-TRIPILE</span>
+                  {" "}· Mon–Sat, 8am–9pm ET
+                </p>
+
+                {/* Buttons */}
+                <div className="flex gap-[10px]">
+                  <a
+                    href="tel:1-800-874-7453"
+                    className="flex-1 inline-flex items-center justify-center gap-[7px] font-body font-medium rounded-[8px] h-[40px] transition-all duration-200 hover:opacity-85"
+                    style={{
+                      fontSize: "13px",
+                      background: "transparent",
+                      border: "1px solid #5C1828",
+                      color: "#5C1828",
+                    }}
+                  >
+                    <Phone size={13} />
+                    Call us
+                  </a>
+                  <button
+                    className="flex-[2] inline-flex items-center justify-center gap-[7px] font-body font-medium text-white rounded-[8px] h-[40px] transition-all duration-200 hover:opacity-90"
+                    style={{
+                      fontSize: "13px",
+                      background: "linear-gradient(120deg, #5C1828 0%, #8B2A3F 100%)",
+                      boxShadow: "0 4px 16px rgba(92,24,40,0.28)",
+                    }}
+                  >
+                    Book {selected.city}
+                    <ArrowUpRight size={13} />
+                  </button>
                 </div>
               </div>
             </div>
-
-            {/* ── Sticky bottom CTA bar ── */}
-            <div
-              className="shrink-0 px-[28px] py-[20px] flex gap-[10px]"
-              style={{
-                borderTop: "1px solid #EDE0CC",
-                background: "rgba(255,255,255,0.95)",
-                backdropFilter: "blur(12px)"
-              }}
-            >
-              <Button variant="ghost" className="flex-1 justify-center">
-                <Phone size={14} aria-hidden />
-                Call us
-              </Button>
-              <Button variant="primary" className="flex-1 justify-center">
-                Book {selected.city}
-              </Button>
-            </div>
-
           </div>
         </div>
       )}

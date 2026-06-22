@@ -9,7 +9,7 @@ type FlightValues = { tab: "flights"; from: string; to: string; departure: strin
 type HotelValues  = { tab: "hotels"; city: string; checkIn: string; checkOut: string };
 export type SearchValues = FlightValues | HotelValues;
 
-interface SearchBoxProps {
+interface PageSearchBoxProps {
   activeTab: "flights" | "hotels";
   setActiveTab: (tab: "flights" | "hotels") => void;
   className?: string;
@@ -42,7 +42,7 @@ function TextField({
       style={{ borderColor: "rgba(255,255,255,0.10)" }}
     >
       <span
-        className="font-body text-[10px] uppercase tracking-[0.12em] mb-[6px] select-none"
+        className="font-body text-[10px] text-center uppercase tracking-[0.12em] mb-[6px] select-none"
         style={{ color: "rgba(255,255,255,0.45)" }}
       >
         {label}
@@ -69,10 +69,8 @@ function DateField({
   onChange: (d: Date | undefined) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const [openUp, setOpenUp] = useState(true);
   const wrapRef = useRef<HTMLDivElement>(null);
 
-  // Close when clicking outside
   useEffect(() => {
     function handler(e: MouseEvent) {
       if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) {
@@ -83,14 +81,6 @@ function DateField({
     return () => document.removeEventListener("mousedown", handler);
   }, [open]);
 
-  function handleToggle() {
-    if (!open && wrapRef.current) {
-      const rect = wrapRef.current.getBoundingClientRect();
-      setOpenUp(rect.top > window.innerHeight - rect.bottom && rect.top > 220);
-    }
-    setOpen((o) => !o);
-  }
-
   const display = value
     ? value.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
     : null;
@@ -100,10 +90,10 @@ function DateField({
       ref={wrapRef}
       className="relative flex flex-col justify-center px-[16px] py-[12px] sm:px-5 sm:py-4 flex-1 min-w-0 border-b sm:border-b-0 cursor-pointer select-none"
       style={{ borderColor: "rgba(255,255,255,0.10)" }}
-      onClick={handleToggle}
+      onClick={() => setOpen((o) => !o)}
     >
       <span
-        className="font-body text-[10px] uppercase tracking-[0.12em] mb-[6px]"
+        className="font-body text-[10px] text-center uppercase tracking-[0.12em] mb-[6px]"
         style={{ color: "rgba(255,255,255,0.45)" }}
       >
         {label}
@@ -119,14 +109,12 @@ function DateField({
         </span>
       </div>
 
-      {/* ── Dropdown Calendar  flips up or down based on viewport space ── */}
+      {/* Calendar always drops below the search bar */}
       {open && (
         <div
           className="absolute left-1/2 -translate-x-1/2 z-[9999] rounded-[18px] overflow-hidden"
           style={{
-            ...(openUp
-              ? { bottom: "calc(100% + 10px)" }
-              : { top: "calc(100% + 10px)" }),
+            top: "calc(100% + 10px)",
             background: "rgba(22,10,8,0.94)",
             backdropFilter: "blur(24px)",
             WebkitBackdropFilter: "blur(24px)",
@@ -150,18 +138,17 @@ function DateField({
   );
 }
 
-// Convert Date → "yyyy-mm-dd" string for search payloads
 function fmt(d: Date | undefined) {
   if (!d) return "";
   return d.toISOString().split("T")[0];
 }
 
-export default function SearchBox({
+export default function PageSearchBox({
   activeTab,
   setActiveTab,
   className,
   onSearch,
-}: SearchBoxProps) {
+}: PageSearchBoxProps) {
   const router = useRouter();
 
   const [from, setFrom]           = useState("");
@@ -183,12 +170,8 @@ export default function SearchBox({
     }
   }
 
-  const outerClass =
-    className ??
-    "absolute bottom-[100px] left-1/2 -translate-x-1/2 translate-y-[48px] z-30 w-full max-w-4xl px-6";
-
   return (
-    <div className={outerClass}>
+    <div className={className ?? "w-full max-w-4xl"}>
       <div
         className="rounded-[20px] border shadow-[0_8px_40px_rgba(15,6,4,0.28)]"
         style={{
@@ -200,7 +183,7 @@ export default function SearchBox({
       >
         {/* Tab row */}
         <div className="flex gap-[6px] px-[16px] pt-[14px]">
-          {(["flights", "hotels"] as const).map((tab) => (
+          {(["flights", "hotels"] as const).filter((tab) => tab === activeTab).map((tab) => (
             <button
               key={tab}
               type="button"

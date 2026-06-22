@@ -123,12 +123,12 @@ export default function Hero({ activeTab, setActiveTab }: HeroProps) {
 
       {/* ── Scroll indicator ── */}
       <div
-        className="absolute bottom-[32px] left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-[8px] transition-opacity duration-700"
+        className="absolute bottom-[10px] left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-[8px] transition-opacity duration-700"
         style={{ opacity: scrolled ? 0 : 0.4 }}
         aria-hidden
       >
         <div
-          className="w-[1px] h-[48px]"
+          className="w-[1px] h-[28px]"
           style={{
             background: "linear-gradient(to bottom, rgba(255,255,255,0.6), transparent)",
           }}

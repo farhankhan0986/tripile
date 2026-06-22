@@ -11,15 +11,15 @@ const bookLinks = [
 
 const companyLinks = [
   { label: "About Us", href: "/about" },
-  { label: "How It Works", href: "#" },
-  { label: "Destinations", href: "#" },
-  { label: "Travel Tips", href: "#" },
+  { label: "Contact Us", href: "/contact" },
+  { label: "Support", href: "/support" },
+  { label: "How It Works", href: "/how-it-works" },
 ];
 
 const legalLinks = [
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms of Service", href: "#" },
-  { label: "Cookie Policy", href: "#" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 function ColHeading({ children }: { children: string }) {

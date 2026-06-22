@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <!-- Deep burgundy base gradient -->
+    <radialGradient id="bg" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#7A1F35"/>
+      <stop offset="100%" stop-color="#3D0E1A"/>
+    </radialGradient>
+    <!-- Gold shimmer for the lettermark -->
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8C96A"/>
+      <stop offset="40%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#A07830"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded square background -->
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+
+  <!-- Subtle inner border glow -->
+  <rect x="1" y="1" width="30" height="30" rx="6.2" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.35"/>
+
+  <!-- Serif "T" lettermark  crossbar -->
+  <rect x="7.5" y="9" width="17" height="2.2" rx="0.5" fill="url(#gold)"/>
+
+  <!-- Stem with tapered bottom (serif feel) -->
+  <path d="M14.2 11.2 H17.8 V22.2 Q16 23 14.2 22.2 Z" fill="url(#gold)"/>
+
+  <!-- Left serif foot -->
+  <rect x="12.4" y="21.4" width="3.8" height="1.4" rx="0.4" fill="url(#gold)"/>
+  <!-- Right serif foot -->
+  <rect x="15.8" y="21.4" width="3.8" height="1.4" rx="0.4" fill="url(#gold)"/>
+
+  <!-- Hair-line crossbar serif caps (tiny end details) -->
+  <rect x="7.5" y="9" width="2.2" height="3.2" rx="0.3" fill="url(#gold)" opacity="0.55"/>
+  <rect x="22.3" y="9" width="2.2" height="3.2" rx="0.3" fill="url(#gold)" opacity="0.55"/>
+</svg>

@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import Button from "@/components/ui/Button";
 
 const links: { label: string; href: string }[] = [
-  { label: "Flights", href: "/flights" },
-  { label: "Hotels",  href: "/hotels"  },
-  { label: "About",   href: "/about"   },
-  { label: "Sign In", href: "/login"   },
+  { label: "Flights",      href: "/flights"       },
+  { label: "Hotels",       href: "/hotels"        },
+  { label: "About",        href: "/about"         },
+  { label: "Contact",      href: "/contact"       },
+  { label: "Sign In",      href: "/login"         },
 ];
 
 export default function Nav() {

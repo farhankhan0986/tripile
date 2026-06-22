@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import SearchBox, { type SearchValues } from "@/components/ui/SearchBox";
+import PageSearchBox, { type SearchValues } from "@/components/ui/PageSearchBox";
 import PhoneBar from "@/components/ui/PhoneBar";
 import Button from "@/components/ui/Button";
 import HotelResultCard, { type HotelResult } from "@/components/HotelResultCard";
@@ -92,7 +92,7 @@ export default function HotelsClient() {
     <div className="flex flex-col min-h-screen" style={{ background: "#FAF7F2" }}>
 
       {/* ── Hero / Search Header ── */}
-      <div className="relative pt-[110px] pb-[60px] overflow-hidden">
+      <div className="relative pt-[110px] pb-[60px]">
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -131,7 +131,7 @@ export default function HotelsClient() {
             From boutique hideaways to luxury resorts  our agents know them all.
           </p>
 
-          <SearchBox
+          <PageSearchBox
             activeTab={activeTab}
             setActiveTab={setActiveTab}
             className="w-full max-w-4xl"

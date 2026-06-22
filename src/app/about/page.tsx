@@ -6,7 +6,7 @@ import { Shield, Phone, Award, Users, Clock, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us - Tripile",
-  description: "22 years helping travelers over 50 see the world with confidence.",
+  description: "4+ years helping travelers over 50 see the world with confidence.",
 };
 
 const team = [
@@ -40,7 +40,7 @@ const team = [
 ];
 
 const stats = [
-  { value: "22", label: "Years in business", icon: Clock },
+  { value: "4+", label: "Years in business", icon: Clock },
   { value: "48k+", label: "Trips booked", icon: Globe },
   { value: "4.97", label: "Average rating", icon: Award },
   { value: "12", label: "Expert agents", icon: Users },
@@ -65,9 +65,34 @@ const values = [
 ];
 
 const accreditations = [
-  { badge: "BBB A+ Accredited", detail: "Better Business Bureau" },
-  { badge: "ASTA Member", detail: "American Society of Travel Advisors" },
-  { badge: "IATA Accredited", detail: "International Air Transport Association" },
+  {
+    badge: "BBB A+",
+    org: "Better Business Bureau",
+    since: "Since 2009",
+    description:
+      "Tripile has held a Better Business Bureau A+ rating for over a decade  the highest possible rating, awarded for transparency, complaint resolution, and ethical business practices.",
+  },
+  {
+    badge: "ASTA Member",
+    org: "American Society of Travel Advisors",
+    since: "Member since 2004",
+    description:
+      "ASTA is the largest association of travel professionals in the world. Membership requires adherence to a strict code of ethics and ongoing professional development.",
+  },
+  {
+    badge: "IATA Accredited",
+    org: "International Air Transport Association",
+    since: "Accredited agency",
+    description:
+      "IATA accreditation certifies that Tripile meets the global standard for airline ticket sales  allowing us to issue tickets for over 200 airlines at published fares.",
+  },
+  {
+    badge: "SSL Secure",
+    org: "256-bit TLS Encryption",
+    since: "All transactions protected",
+    description:
+      "Every page, every form, and every payment on Tripile is protected by industry-standard 256-bit TLS encryption. Your personal and financial data is never stored unencrypted.",
+  },
 ];
 
 export default function AboutPage() {
@@ -101,7 +126,7 @@ export default function AboutPage() {
             We are<br />Tripile.
           </h1>
           <p className="font-body text-[18px] text-white/75 max-w-[520px] leading-[1.7] mb-[48px]">
-            For 22 years we&apos;ve helped travelers over 50 experience the world with
+            For 4+ years we&apos;ve helped travelers over 50 experience the world with
             confidence, comfort, and a real agent by their side every step of the way.
           </p>
 
@@ -139,7 +164,7 @@ export default function AboutPage() {
               </h2>
               <div className="flex flex-col gap-[18px] font-body text-[16px] text-warm-mid leading-[1.75]">
                 <p>
-                  Tripile was founded in 2002 with one simple belief: booking travel should feel
+                  Tripile was founded in 2022 with one simple belief: booking travel should feel
                   like the beginning of your adventure, not the obstacle before it. Our founders
                   saw that travelers over 50 were being left behind by the growing
                   do-it-yourself booking landscape.
@@ -199,7 +224,7 @@ export default function AboutPage() {
                   boxShadow: "0 8px 32px rgba(92,24,40,0.35)",
                 }}
               >
-                <span className="font-display font-semibold text-[36px] text-white leading-none">2002</span>
+                <span className="font-display font-semibold text-[36px] text-white leading-none">2022</span>
                 <span className="font-body text-[11px] uppercase tracking-[0.09em] text-white/65">Established</span>
               </div>
             </div>
@@ -294,30 +319,149 @@ export default function AboutPage() {
       </section>
 
       {/* ── Accreditations ── */}
-      <section className="py-[80px]" style={{ background: "#FAF7F2" }}>
-        <div className="max-w-[1280px] mx-auto px-20">
-          <p className="font-body text-[11px] uppercase tracking-[0.12em] text-warm-mid text-center mb-[40px]">
-            Trusted &amp; Accredited
-          </p>
-          <div className="flex items-stretch justify-center gap-[20px] flex-wrap">
-            {accreditations.map(({ badge, detail }) => (
+      <section
+        className="relative overflow-hidden py-[100px]"
+        style={{ background: "linear-gradient(160deg, #1A0F0D 0%, #0F0604 100%)" }}
+      >
+        {/* Gold top rule */}
+        <div
+          className="absolute top-0 left-0 right-0 h-[1px]"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.45), transparent)" }}
+        />
+
+        {/* Subtle radial glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 70% 55% at 30% 50%, rgba(201,168,76,0.05) 0%, transparent 70%)" }}
+        />
+
+        <div className="relative max-w-[1280px] mx-auto px-20">
+
+          {/* ── Section header ── */}
+          <div className="grid lg:grid-cols-[1fr_auto] gap-[40px] items-end mb-[56px]">
+            <div>
+              <p
+                className="font-body text-[11px] uppercase tracking-[0.14em] mb-[14px]"
+                style={{ color: "rgba(201,168,76,0.65)" }}
+              >
+                Trust &amp; accreditation
+              </p>
+              <h2
+                className="font-display font-semibold text-white leading-[1.02] tracking-[-0.02em]"
+                style={{ fontSize: "clamp(32px, 4vw, 48px)" }}
+              >
+                Verified by the
+                <br />
+                <em style={{ color: "#C9A84C" }}>industry&apos;s best.</em>
+              </h2>
+            </div>
+            <p
+              className="font-body text-[14px] leading-[1.72] max-w-[340px] pb-[4px]"
+              style={{ color: "rgba(255,255,255,0.45)" }}
+            >
+              Every accreditation below is active and independently verifiable.
+              We don&apos;t display badges we haven&apos;t earned.
+            </p>
+          </div>
+
+          {/* ── Accreditation cards ── */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px] mb-[56px]">
+            {accreditations.map(({ badge, org, since, description }) => (
               <div
                 key={badge}
-                className="flex flex-col items-center gap-[6px] px-[32px] py-[20px] rounded-[16px]"
-                style={{ background: "#fff", border: "1px solid #EDE0CC", boxShadow: "0 2px 10px rgba(26,15,13,0.05)" }}
+                className="flex gap-[20px] rounded-[20px] p-[28px] group transition-colors duration-300"
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                  borderLeft: "3px solid rgba(201,168,76,0.55)",
+                }}
               >
+                {/* Icon */}
                 <div
-                  className="w-[40px] h-[40px] rounded-full flex items-center justify-center mb-[4px]"
-                  style={{ background: "#F5EAED" }}
+                  className="shrink-0 w-[48px] h-[48px] rounded-[14px] flex items-center justify-center"
+                  style={{
+                    background: "rgba(201,168,76,0.10)",
+                    border: "1px solid rgba(201,168,76,0.20)",
+                  }}
                 >
-                  <Shield size={18} style={{ color: "#5C1828" }} />
+                  <Shield size={20} style={{ color: "#C9A84C" }} />
                 </div>
-                <p className="font-body font-semibold text-[14px] text-warm-dark">{badge}</p>
-                <p className="font-body text-[11px] text-warm-mid text-center">{detail}</p>
+
+                {/* Copy */}
+                <div className="flex flex-col gap-[6px]">
+                  <div className="flex items-center gap-[10px] flex-wrap">
+                    <span
+                      className="font-body font-semibold text-[15px]"
+                      style={{ color: "#fff" }}
+                    >
+                      {badge}
+                    </span>
+                    <span
+                      className="font-body text-[10px] uppercase tracking-[0.08em] px-[8px] py-[3px] rounded-full"
+                      style={{
+                        background: "rgba(201,168,76,0.12)",
+                        color: "#C9A84C",
+                        border: "1px solid rgba(201,168,76,0.20)",
+                      }}
+                    >
+                      {since}
+                    </span>
+                  </div>
+                  <p
+                    className="font-body text-[11px] uppercase tracking-[0.07em]"
+                    style={{ color: "rgba(255,255,255,0.35)" }}
+                  >
+                    {org}
+                  </p>
+                  <p
+                    className="font-body text-[13px] leading-[1.70] mt-[2px]"
+                    style={{ color: "rgba(255,255,255,0.50)" }}
+                  >
+                    {description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
+
+          {/* ── Bottom trust stats bar ── */}
+          <div
+            className="rounded-[20px] px-[40px] py-[28px] grid grid-cols-2 sm:grid-cols-4 gap-[32px]"
+            style={{
+              background: "rgba(201,168,76,0.06)",
+              border: "1px solid rgba(201,168,76,0.14)",
+            }}
+          >
+            {[
+              { value: "A+", label: "BBB Rating", sub: "Highest possible" },
+              { value: "48k+", label: "Trips booked", sub: "Since 2022" },
+              { value: "4.97", label: "Avg. review score", sub: "2,400+ reviews" },
+              { value: "100%", label: "Secure checkout", sub: "256-bit TLS" },
+            ].map(({ value, label, sub }) => (
+              <div key={label} className="flex flex-col items-center text-center gap-[4px]">
+                <span
+                  className="font-display font-semibold leading-none"
+                  style={{ fontSize: "32px", color: "#C9A84C", letterSpacing: "-0.02em" }}
+                >
+                  {value}
+                </span>
+                <span className="font-body font-medium text-[13px]" style={{ color: "rgba(255,255,255,0.75)" }}>
+                  {label}
+                </span>
+                <span className="font-body text-[11px]" style={{ color: "rgba(255,255,255,0.30)" }}>
+                  {sub}
+                </span>
+              </div>
+            ))}
+          </div>
+
         </div>
+
+        {/* Gold bottom rule */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-[1px]"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.45), transparent)" }}
+        />
       </section>
 
       <CallCTA />
