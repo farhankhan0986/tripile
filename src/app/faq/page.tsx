@@ -165,11 +165,11 @@ export default function FAQPage() {
           }}
         />
 
-        <div className="relative z-10 max-w-[1280px] mx-auto px-20 py-[100px] text-center">
+        <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-20 py-[72px] lg:py-[100px] text-center">
           <p className="font-body text-[11px] uppercase tracking-[0.12em] text-white/50 mb-[20px]">
             Frequently asked questions
           </p>
-          <h1 className="font-display font-semibold text-[72px] italic text-white leading-[0.97] tracking-[-0.02em] mb-[24px]">
+          <h1 className="font-display font-semibold italic text-white leading-[0.97] tracking-[-0.02em] mb-[24px]" style={{ fontSize: "clamp(36px, 7vw, 72px)" }}>
             We&apos;ve got<br />
             <span style={{ color: "#C9A84C" }}>answers.</span>
           </h1>
@@ -181,9 +181,9 @@ export default function FAQPage() {
       </section>
 
       {/* ── Main content ── */}
-      <section className="py-[96px]">
-        <div className="max-w-[1100px] mx-auto px-20">
-          <div className="grid lg:grid-cols-[260px_1fr] gap-[48px] items-start">
+      <section className="py-[48px] lg:py-[96px]">
+        <div className="max-w-[1100px] mx-auto px-6 lg:px-20">
+          <div className="grid lg:grid-cols-[260px_1fr] gap-[32px] lg:gap-[48px] items-start">
 
             {/* ── Sidebar: category nav ── */}
             <div className="lg:sticky lg:top-[96px] flex flex-col gap-[8px]">
@@ -243,7 +243,7 @@ export default function FAQPage() {
             {/* ── FAQ list ── */}
             <div>
               <div className="mb-[8px]">
-                <h2 className="font-display font-semibold text-[40px] text-warm-dark leading-[1.0] mb-[4px]">
+                <h2 className="font-display font-semibold text-warm-dark leading-[1.0] mb-[4px]" style={{ fontSize: "clamp(24px, 5vw, 40px)" }}>
                   {categories[activeCategory].label}
                 </h2>
                 <p className="font-body text-[13px] text-warm-light">
@@ -259,7 +259,7 @@ export default function FAQPage() {
                   boxShadow: "0 4px 24px rgba(26,15,13,0.06)",
                 }}
               >
-                <div className="px-[32px]">
+                <div className="px-[16px] lg:px-[32px]">
                   {categories[activeCategory].faqs.map(({ q, a }) => (
                     <FAQItem key={q} q={q} a={a} />
                   ))}

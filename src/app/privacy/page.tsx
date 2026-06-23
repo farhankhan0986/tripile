@@ -95,7 +95,7 @@ export default function PrivacyPage() {
           background: "linear-gradient(160deg, #1A0F0D 0%, #5C1828 55%, #3D0E1A 100%)",
         }}
       >
-        <div className="max-w-[1280px] mx-auto px-20 py-[90px]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-20 py-[56px] lg:py-[90px]">
           <div
             className="inline-flex items-center gap-[8px] px-[14px] py-[7px] rounded-full mb-[28px]"
             style={{ background: "rgba(201,168,76,0.15)", border: "1px solid rgba(201,168,76,0.25)" }}
@@ -108,7 +108,7 @@ export default function PrivacyPage() {
               Your privacy matters
             </span>
           </div>
-          <h1 className="font-display font-semibold text-[68px] text-white leading-[0.97] tracking-[-0.02em] mb-[20px]">
+          <h1 className="font-display font-semibold text-white leading-[0.97] tracking-[-0.02em] mb-[20px]" style={{ fontSize: "clamp(36px, 6vw, 68px)" }}>
             Privacy Policy
           </h1>
           <p className="font-body text-[16px] text-white/65 max-w-[540px] leading-[1.72] mb-[32px]">
@@ -129,12 +129,12 @@ export default function PrivacyPage() {
       />
 
       {/* ── Content ── */}
-      <section className="py-[96px]">
-        <div className="max-w-[900px] mx-auto px-20">
+      <section className="py-[48px] lg:py-[96px]">
+        <div className="max-w-[900px] mx-auto px-6 lg:px-20">
 
           {/* Intro */}
           <div
-            className="rounded-[20px] p-[36px] mb-[64px] flex gap-[20px]"
+            className="rounded-[20px] p-[24px] lg:p-[36px] mb-[48px] lg:mb-[64px] flex flex-col sm:flex-row gap-[16px] sm:gap-[20px]"
             style={{
               background: "#fff",
               border: "1px solid #EDE0CC",
@@ -179,14 +179,14 @@ export default function PrivacyPage() {
                     >
                       {String(si + 1).padStart(2, "0")}
                     </span>
-                    <h2 className="font-display font-semibold text-[32px] text-warm-dark leading-[1.0]">
+                    <h2 className="font-display font-semibold text-warm-dark leading-[1.0]" style={{ fontSize: "clamp(22px, 4vw, 32px)" }}>
                       {title}
                     </h2>
                   </div>
                 </div>
 
                 {/* Sub-sections */}
-                <div className="flex flex-col gap-[24px] pl-[58px]">
+                <div className="flex flex-col gap-[24px] pl-0 sm:pl-[58px]">
                   {content.map(({ heading, body }) => (
                     <div
                       key={heading}
@@ -209,7 +209,7 @@ export default function PrivacyPage() {
 
           {/* Contact box */}
           <div
-            className="mt-[64px] rounded-[20px] p-[40px] text-center"
+            className="mt-[48px] lg:mt-[64px] rounded-[20px] p-[24px] lg:p-[40px] text-center"
             style={{
               background: "linear-gradient(135deg, #5C1828 0%, #3D0E1A 100%)",
               boxShadow: "0 12px 48px rgba(92,24,40,0.28)",

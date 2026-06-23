@@ -10,7 +10,7 @@ const trustPoints = [
 
 export default function CallCTA() {
   return (
-    <section className="relative overflow-hidden py-[110px]"
+    <section className="relative overflow-hidden py-[64px] lg:py-[110px]"
       style={{ background: "linear-gradient(135deg, #3D0F19 0%, #5C1828 40%, #8B2A3F 100%)" }}
     >
       {/* Soft radial glow in center */}
@@ -31,8 +31,8 @@ export default function CallCTA() {
         style={{ background: "rgba(201,168,76,0.06)" }}
       />
 
-      <div className="relative max-w-[1280px] mx-auto px-20">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-[56px]">
+      <div className="relative max-w-[1280px] mx-auto px-6 lg:px-20">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-[40px] lg:gap-[56px]">
 
           {/* Left  copy */}
           <div className="flex flex-col max-w-[580px]">
@@ -47,7 +47,7 @@ export default function CallCTA() {
               </span>
             </div>
 
-            <h2 className="font-display font-semibold text-[52px] italic text-white tracking-[-0.01em] leading-[1.05] mb-[18px]">
+            <h2 className="font-display font-semibold italic text-white tracking-[-0.01em] leading-[1.05] mb-[18px]" style={{ fontSize: "clamp(28px, 5vw, 52px)" }}>
               Prefer to speak<br />with someone?
             </h2>
 
@@ -82,7 +82,7 @@ export default function CallCTA() {
           >
             {/* Big number card */}
             <div
-              className="rounded-[24px] px-[48px] py-[40px] flex flex-col items-center gap-[16px] w-full lg:w-auto"
+              className="rounded-[24px] px-[28px] py-[32px] lg:px-[48px] lg:py-[40px] flex flex-col items-center gap-[16px] w-full lg:w-auto"
               style={{
                 background: "rgba(255,255,255,0.06)",
                 border: "1px solid rgba(255,255,255,0.12)",
@@ -104,7 +104,8 @@ export default function CallCTA() {
 
               <a
                 href="tel:1-800-874-7453"
-                className="font-display font-semibold text-[44px] text-white leading-none tracking-[-0.02em] hover:text-gold-accent transition-colors duration-200"
+                className="font-display font-semibold text-white leading-none tracking-[-0.02em] hover:text-gold-accent transition-colors duration-200"
+                style={{ fontSize: "clamp(26px, 5vw, 44px)" }}
               >
                 1-800-TRIPILE
               </a>

@@ -157,13 +157,13 @@ export default function HowItWorksPage() {
           }}
         />
 
-        <div className="relative z-10 max-w-[1280px] mx-auto px-20 py-[110px]">
+        <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-20 py-[72px] lg:py-[110px]">
           <p className="font-body text-[11px] uppercase tracking-[0.14em] text-white/50 mb-[24px]">
             How it works
           </p>
           <h1
             className="font-display font-semibold text-white leading-[0.96] tracking-[-0.02em] mb-[28px]"
-            style={{ fontSize: "clamp(52px, 7vw, 86px)" }}
+            style={{ fontSize: "clamp(32px, 7vw, 86px)" }}
           >
             Travel made{" "}
             <em style={{ color: "#C9A84C", fontStyle: "italic" }}>simple.</em>
@@ -179,7 +179,7 @@ export default function HowItWorksPage() {
           </p>
 
           {/* Step indicators */}
-          <div className="flex items-center gap-[0px]">
+          <div className="flex flex-wrap items-center gap-y-[12px] gap-x-0">
             {steps.map(({ number, title, icon: Icon }, i) => (
               <div key={number} className="flex items-center">
                 <div className="flex items-center gap-[12px]">
@@ -237,7 +237,7 @@ export default function HowItWorksPage() {
       {steps.map(({ number, icon: Icon, title, headline, body, image, imageAlt, details, quote, flip }) => (
         <section
           key={number}
-          className="py-[100px]"
+          className="py-[56px] lg:py-[100px]"
           style={{
             background:
               number === "02"
@@ -245,9 +245,9 @@ export default function HowItWorksPage() {
                 : "#FAF7F2",
           }}
         >
-          <div className="max-w-[1280px] mx-auto px-20">
+          <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
             <div
-              className={`grid lg:grid-cols-2 gap-[80px] items-center ${
+              className={`grid lg:grid-cols-2 gap-[40px] lg:gap-[80px] items-center ${
                 flip ? "lg:[direction:rtl]" : ""
               }`}
             >
@@ -257,7 +257,7 @@ export default function HowItWorksPage() {
                   <div
                     className="rounded-[24px] overflow-hidden"
                     style={{
-                      height: "520px",
+                      height: "clamp(240px, 40vw, 520px)",
                       boxShadow: "0 16px 64px rgba(26,15,13,0.18)",
                     }}
                   >
@@ -299,7 +299,7 @@ export default function HowItWorksPage() {
                   {/* Pull-quote floating card */}
                   {quote && (
                     <div
-                      className="absolute bottom-[-28px] right-[-28px] max-w-[280px] rounded-[20px] p-[24px]"
+                      className="hidden lg:block absolute bottom-[-28px] right-[-28px] max-w-[280px] rounded-[20px] p-[24px]"
                       style={{
                         background: "linear-gradient(135deg, #5C1828 0%, #3D0E1A 100%)",
                         boxShadow: "0 12px 40px rgba(92,24,40,0.32)",
@@ -316,7 +316,7 @@ export default function HowItWorksPage() {
 
                   {/* Decorative ghost number */}
                   <span
-                    className="absolute -bottom-[16px] -left-[24px] font-display font-semibold leading-none select-none pointer-events-none"
+                    className="hidden lg:block absolute -bottom-[16px] -left-[24px] font-display font-semibold leading-none select-none pointer-events-none"
                     style={{ fontSize: "120px", color: "#EDE0CC", zIndex: 0 }}
                   >
                     {number}
@@ -388,7 +388,7 @@ export default function HowItWorksPage() {
 
       {/* ── Why Tripile is different  feature grid ── */}
       <section
-        className="py-[100px]"
+        className="py-[56px] lg:py-[100px]"
         style={{
           background: "linear-gradient(180deg, #1A0F0D 0%, #0F0604 100%)",
           borderTop: "1px solid rgba(201,168,76,0.15)",
@@ -403,7 +403,7 @@ export default function HowItWorksPage() {
           }}
         />
 
-        <div className="max-w-[1280px] mx-auto px-20 pt-[0px]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-20 pt-[0px]">
           <div className="text-center mb-[64px]">
             <p className="font-body text-[11px] uppercase tracking-[0.12em] mb-[16px]" style={{ color: "rgba(201,168,76,0.7)" }}>
               Why choose Tripile
@@ -467,13 +467,13 @@ export default function HowItWorksPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-[100px]" style={{ background: "#FAF7F2" }}>
-        <div className="max-w-[860px] mx-auto px-20">
-          <div className="text-center mb-[56px]">
+      <section className="py-[56px] lg:py-[100px]" style={{ background: "#FAF7F2" }}>
+        <div className="max-w-[860px] mx-auto px-6 lg:px-20">
+          <div className="text-center mb-[40px] lg:mb-[56px]">
             <p className="font-body text-[11px] uppercase tracking-[0.12em] text-warm-mid mb-[12px]">
               Quick answers
             </p>
-            <h2 className="font-display font-semibold text-[44px] text-warm-dark leading-[1.02] tracking-[-0.01em]">
+            <h2 className="font-display font-semibold text-warm-dark leading-[1.02] tracking-[-0.01em]" style={{ fontSize: "clamp(28px, 5vw, 44px)" }}>
               Common questions
             </h2>
           </div>
@@ -485,7 +485,7 @@ export default function HowItWorksPage() {
             {faqs.map(({ q, a }, i) => (
               <div
                 key={q}
-                className="flex gap-[24px] px-[36px] py-[32px]"
+                className="flex gap-[14px] lg:gap-[24px] px-[20px] lg:px-[36px] py-[20px] lg:py-[32px]"
                 style={{
                   background: "#fff",
                   borderTop: i > 0 ? "1px solid #EDE0CC" : "none",

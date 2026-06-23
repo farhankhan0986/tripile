@@ -41,11 +41,11 @@ export default function HotelResultCard({ result }: { result: HotelResult }) {
 
   return (
     <article
-      className="group bg-white rounded-[18px] overflow-hidden flex flex-row transition-all duration-250 hover:shadow-[0_8px_32px_rgba(26,15,13,0.10)]"
+      className="group bg-white rounded-[18px] overflow-hidden flex flex-col sm:flex-row transition-all duration-250 hover:shadow-[0_8px_32px_rgba(26,15,13,0.10)]"
       style={{ border: "1px solid #EDE0CC", boxShadow: "0 2px 10px rgba(26,15,13,0.05)" }}
     >
       {/* ── Hotel image ── */}
-      <div className="relative w-[220px] shrink-0 overflow-hidden">
+      <div className="relative w-full sm:w-[220px] h-[200px] sm:h-auto shrink-0 overflow-hidden">
         <img
           src={imageUrl}
           alt={name}
@@ -106,7 +106,7 @@ export default function HotelResultCard({ result }: { result: HotelResult }) {
 
         {/* Bottom: price + CTA */}
         <div
-          className="flex items-end justify-between pt-[14px]"
+          className="flex items-center justify-between pt-[14px]"
           style={{ borderTop: "1px solid #EDE0CC" }}
         >
           <div>

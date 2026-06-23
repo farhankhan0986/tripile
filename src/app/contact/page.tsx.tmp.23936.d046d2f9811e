@@ -170,11 +170,11 @@ export default function ContactPage() {
       {/* ── Main content ── */}
       <section className="py-[48px] lg:py-[96px]">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-[32px] lg:gap-[48px] items-start">
+          <div className="grid lg:grid-cols-[1fr_400px] gap-[32px] lg:gap-[48px] items-start">
 
             {/* ── Left: Form ── */}
             <div
-              className="rounded-[24px] p-[24px] lg:p-[48px]"
+              className="rounded-[24px] p-[48px]"
               style={{
                 background: "#fff",
                 border: "1px solid #EDE0CC",
@@ -190,7 +190,7 @@ export default function ContactPage() {
                     <CheckCircle2 size={32} style={{ color: "#5C1828" }} />
                   </div>
                   <div>
-                    <h2 className="font-display font-semibold text-[26px] lg:text-[34px] text-warm-dark mb-[10px]">
+                    <h2 className="font-display font-semibold text-[34px] text-warm-dark mb-[10px]">
                       Message received
                     </h2>
                     <p className="font-body text-[15px] text-warm-mid leading-[1.72] max-w-[340px] mx-auto">
@@ -215,7 +215,7 @@ export default function ContactPage() {
                   {/* Form header */}
                   <div className="flex items-start justify-between mb-[36px]">
                     <div>
-                      <h2 className="font-display font-semibold text-[26px] lg:text-[34px] text-warm-dark leading-[1.05] mb-[6px]">
+                      <h2 className="font-display font-semibold text-[34px] text-warm-dark leading-[1.05] mb-[6px]">
                         Send us a message
                       </h2>
                       <p className="font-body text-[14px] text-warm-mid leading-[1.65]">

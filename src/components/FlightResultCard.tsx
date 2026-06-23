@@ -79,30 +79,30 @@ export default function FlightResultCard({ result }: { result: FlightResult }) {
           </div>
 
           {/* ── Main route row ── */}
-          <div className="flex items-center gap-[16px] mb-[16px]">
+          <div className="flex items-center gap-[8px] sm:gap-[16px] mb-[12px] sm:mb-[16px]">
 
             {/* Departure */}
             <div className="shrink-0">
-              <p className="font-display font-semibold text-[30px] text-warm-dark leading-none">
+              <p className="font-display font-semibold text-[22px] sm:text-[30px] text-warm-dark leading-none">
                 {departureTime}
               </p>
-              <p className="font-body text-[13px] text-warm-mid mt-[4px] font-medium">
+              <p className="font-body text-[12px] sm:text-[13px] text-warm-mid mt-[3px] sm:mt-[4px] font-medium">
                 {origin}
               </p>
             </div>
 
             {/* Flight path */}
-            <div className="flex flex-col items-center flex-1 min-w-0 gap-[6px]">
-              <p className="font-body text-[12px] text-warm-mid">
+            <div className="flex flex-col items-center flex-1 min-w-0 gap-[4px] sm:gap-[6px]">
+              <p className="font-body text-[11px] sm:text-[12px] text-warm-mid">
                 {duration}
               </p>
-              <div className="flex items-center w-full gap-[6px]">
+              <div className="flex items-center w-full gap-[4px] sm:gap-[6px]">
                 <div className="h-[1.5px] flex-1 rounded-full" style={{ background: "#EDE0CC" }} />
                 <div
-                  className="w-[28px] h-[28px] rounded-full flex items-center justify-center shrink-0"
+                  className="w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] rounded-full flex items-center justify-center shrink-0"
                   style={{ background: isNonStop ? "#F5EAED" : "#FAF7F2", border: `1.5px solid ${isNonStop ? "#5C1828" : "#EDE0CC"}` }}
                 >
-                  <Plane size={12} style={{ color: isNonStop ? "#5C1828" : "#A89282" }} />
+                  <Plane size={10} style={{ color: isNonStop ? "#5C1828" : "#A89282" }} />
                 </div>
                 <div className="h-[1.5px] flex-1 rounded-full" style={{ background: "#EDE0CC" }} />
               </div>
@@ -116,10 +116,10 @@ export default function FlightResultCard({ result }: { result: FlightResult }) {
 
             {/* Arrival */}
             <div className="text-right shrink-0">
-              <p className="font-display font-semibold text-[30px] text-warm-dark leading-none">
+              <p className="font-display font-semibold text-[22px] sm:text-[30px] text-warm-dark leading-none">
                 {arrivalTime}
               </p>
-              <p className="font-body text-[13px] text-warm-mid mt-[4px] font-medium">
+              <p className="font-body text-[12px] sm:text-[13px] text-warm-mid mt-[3px] sm:mt-[4px] font-medium">
                 {destination}
               </p>
             </div>
@@ -128,11 +128,11 @@ export default function FlightResultCard({ result }: { result: FlightResult }) {
 
           {/* ── Bottom row: amenities + price + CTA ── */}
           <div
-            className="flex items-center justify-between pt-[14px]"
+            className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-[14px] gap-[12px] sm:gap-0"
             style={{ borderTop: "1px solid #EDE0CC" }}
           >
-            {/* Amenity icons */}
-            <div className="flex items-center gap-[14px]">
+            {/* Amenity icons — hidden on mobile */}
+            <div className="hidden sm:flex items-center gap-[14px]">
               <div className="flex items-center gap-[5px] font-body text-[12px] text-warm-mid">
                 <Wifi size={13} style={{ color: "#A89282" }} />
                 <span>Wi-Fi</span>
@@ -148,9 +148,9 @@ export default function FlightResultCard({ result }: { result: FlightResult }) {
             </div>
 
             {/* Price + actions */}
-            <div className="flex items-center gap-[16px] shrink-0">
-              <div className="text-right">
-                <p className="font-display font-semibold text-[26px] text-burg-deep leading-none">
+            <div className="flex items-center justify-between sm:justify-end sm:gap-[16px]">
+              <div>
+                <p className="font-display font-semibold text-[22px] sm:text-[26px] text-burg-deep leading-none">
                   {currency} {price}
                 </p>
                 <p className="font-body text-[11px] text-warm-mid mt-[2px]">per person</p>

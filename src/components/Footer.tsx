@@ -54,13 +54,13 @@ export default function Footer() {
         style={{ background: "linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent)" }}
       />
 
-      <div className="max-w-[1280px] mx-auto px-20 pt-[72px] pb-[48px]">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-20 pt-[48px] lg:pt-[72px] pb-[48px]">
 
         {/* Main grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-[56px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-[36px] lg:gap-[56px]">
 
           {/* Col 1  Brand */}
-          <div className="flex flex-col gap-[0px]">
+          <div className="flex flex-col gap-[0px] sm:col-span-2 lg:col-span-1">
             <a
               href="/"
               className="font-display font-semibold text-[32px] text-white leading-none mb-[14px] hover:text-gold-accent transition-colors duration-200"

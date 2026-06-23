@@ -167,7 +167,7 @@ export default function SignupPage() {
             </div>
 
             {/* Phone + Password side by side */}
-            <div className="grid grid-cols-2 gap-[12px]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
               <div className="flex flex-col gap-[6px]">
                 <label className="font-body text-[11px] uppercase tracking-[0.10em] text-warm-mid">Phone <span className="normal-case tracking-normal text-warm-light">(opt.)</span></label>
                 <input

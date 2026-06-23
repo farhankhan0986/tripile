@@ -75,18 +75,18 @@ export default function Testimonials() {
 
   return (
     <section
-      className="py-[100px]"
+      className="py-[64px] lg:py-[100px]"
       style={{ background: "linear-gradient(160deg, #F5EAED 0%, #FAF7F2 50%, #EDE0CC 100%)" }}
     >
-      <div className="max-w-[1280px] mx-auto px-20">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
 
         {/* Heading */}
-        <div className="mb-[56px]">
+        <div className="mb-[36px] lg:mb-[56px]">
           <p className="font-body text-[11px] uppercase tracking-[0.12em] text-warm-mid mb-[12px]">
             Real stories
           </p>
           <div className="flex items-end justify-between">
-            <h2 className="font-display font-medium text-[52px] text-warm-dark leading-[1.05] tracking-[-0.01em]">
+            <h2 className="font-display font-medium text-warm-dark leading-[1.05] tracking-[-0.01em]" style={{ fontSize: "clamp(28px, 5vw, 52px)" }}>
               What our travelers say
             </h2>
             {/* Aggregate trust badge */}
@@ -104,11 +104,11 @@ export default function Testimonials() {
         </div>
 
         {/* Cards layout: 1 large featured + 4 in a 2×2 grid */}
-        <div className="grid lg:grid-cols-[1fr_1fr] gap-[20px]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-[14px] lg:gap-[20px]">
 
           {/* Featured card left */}
           <div
-            className="relative rounded-[20px] p-[36px] flex flex-col justify-between overflow-hidden"
+            className="relative rounded-[20px] p-[24px] lg:p-[36px] flex flex-col justify-between overflow-hidden"
             style={{
               background: "linear-gradient(135deg, #5C1828 0%, #8B2A3F 100%)",
               boxShadow: "0 8px 40px rgba(92,24,40,0.28)"
@@ -124,7 +124,7 @@ export default function Testimonials() {
             <div className="flex flex-col gap-[24px] relative z-10">
               <StarRating count={featured.stars} />
 
-              <p className="font-display text-[26px] italic text-white leading-[1.55]">
+              <p className="font-display italic text-white leading-[1.55]" style={{ fontSize: "clamp(18px, 3.5vw, 26px)" }}>
                 &ldquo;{featured.quote}&rdquo;
               </p>
             </div>

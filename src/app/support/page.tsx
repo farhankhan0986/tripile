@@ -115,7 +115,7 @@ export default function SupportPage() {
           }}
         />
 
-        <div className="relative z-10 max-w-[1280px] mx-auto px-20 py-[120px] flex flex-col items-center text-center">
+        <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-20 py-[80px] lg:py-[120px] flex flex-col items-center text-center">
           {/* Eyebrow */}
           <span
             className="inline-flex items-center gap-[6px] px-[14px] py-[6px] rounded-full font-body text-[11px] uppercase tracking-[0.08em] mb-[28px]"
@@ -192,8 +192,8 @@ export default function SupportPage() {
       </section>
 
       {/* ── Contact Channels ── */}
-      <section className="py-[80px] bg-ivory">
-        <div className="max-w-[1280px] mx-auto px-20">
+      <section className="py-[48px] lg:py-[80px] bg-ivory">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[20px]">
 
             {/* Phone  featured */}
@@ -354,19 +354,19 @@ export default function SupportPage() {
 
       {/* ── What We Help With ── */}
       <section
-        className="py-[100px]"
+        className="py-[64px] lg:py-[100px]"
         style={{
           background:
             "linear-gradient(160deg, #F5EAED 0%, #FAF7F2 55%, #EDE0CC 100%)",
         }}
       >
-        <div className="max-w-[1280px] mx-auto px-20">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
           <div className="mb-[56px]">
             <p className="font-body text-[11px] uppercase tracking-[0.12em] text-warm-mid mb-[12px]">
               How we help
             </p>
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-[16px]">
-              <h2 className="font-display font-medium text-[48px] text-warm-dark leading-[1.05] tracking-[-0.01em]">
+              <h2 className="font-display font-medium text-warm-dark leading-[1.05] tracking-[-0.01em]" style={{ fontSize: "clamp(28px, 5vw, 48px)" }}>
                 What our agents handle
               </h2>
               <a
@@ -413,10 +413,10 @@ export default function SupportPage() {
 
       {/* ── Social Proof strip ── */}
       <section
-        className="py-[56px]"
+        className="py-[48px] lg:py-[56px]"
         style={{ background: "linear-gradient(135deg, #3D0F19 0%, #5C1828 50%, #8B2A3F 100%)" }}
       >
-        <div className="max-w-[1280px] mx-auto px-20">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-[0px]">
             {[
               { value: "2,400+", label: "Verified reviews",    sub: "Average 4.97 / 5"       },
@@ -449,16 +449,16 @@ export default function SupportPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-[110px] bg-ivory">
-        <div className="max-w-[1280px] mx-auto px-20">
-          <div className="grid lg:grid-cols-[360px_1fr] gap-[80px]">
+      <section className="py-[64px] lg:py-[110px] bg-ivory">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
+          <div className="grid lg:grid-cols-[360px_1fr] gap-[40px] lg:gap-[80px]">
 
             {/* Sticky left */}
             <div className="flex flex-col lg:sticky lg:top-[100px] lg:self-start">
               <p className="font-body text-[11px] uppercase tracking-[0.12em] text-warm-mid mb-[12px]">
                 FAQ
               </p>
-              <h2 className="font-display font-medium text-[44px] text-warm-dark leading-[1.05] tracking-[-0.01em] mb-[20px]">
+              <h2 className="font-display font-medium text-warm-dark leading-[1.05] tracking-[-0.01em] mb-[20px]" style={{ fontSize: "clamp(28px, 5vw, 44px)" }}>
                 Common questions
               </h2>
               <p className="font-body text-[16px] text-warm-mid leading-[1.75] mb-[36px]">

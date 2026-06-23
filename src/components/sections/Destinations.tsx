@@ -335,20 +335,20 @@ export default function Destinations() {
   return (
     <>
       <section
-        className="py-[110px]"
+        className="py-[64px] lg:py-[110px]"
         style={{ background: "linear-gradient(180deg, #FAF7F2 0%, #F2EBE1 100%)" }}
       >
-        <div className="max-w-[1280px] mx-auto px-20">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
 
           {/* ── Section header ── */}
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-[20px] mb-[52px]">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-[20px] mb-[32px] lg:mb-[52px]">
             <div>
               <p className="font-body text-[11px] uppercase tracking-[0.14em] text-warm-mid mb-[12px]">
                 Where we go
               </p>
               <h2
                 className="font-display font-medium text-warm-dark leading-[1.02] tracking-[-0.02em]"
-                style={{ fontSize: "clamp(36px, 5vw, 52px)" }}
+                style={{ fontSize: "clamp(28px, 5vw, 52px)" }}
               >
                 Popular destinations
               </h2>

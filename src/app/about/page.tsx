@@ -118,11 +118,11 @@ export default function AboutPage() {
           style={{ background: "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(201,168,76,0.07) 0%, transparent 70%)" }}
         />
 
-        <div className="relative z-10 max-w-[1280px] mx-auto px-20 py-[120px]">
+        <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-20 py-[80px] lg:py-[120px]">
           <p className="font-body text-[11px] uppercase tracking-[0.12em] text-white/50 mb-[20px]">
             Our Company
           </p>
-          <h1 className="font-display font-semibold text-[76px] italic text-white leading-[0.98] tracking-[-0.02em] mb-[28px] max-w-[700px]">
+          <h1 className="font-display font-semibold italic text-white leading-[0.98] tracking-[-0.02em] mb-[28px] max-w-[700px]" style={{ fontSize: "clamp(36px, 7vw, 76px)" }}>
             We are<br />Tripile.
           </h1>
           <p className="font-body text-[18px] text-white/75 max-w-[520px] leading-[1.7] mb-[48px]">
@@ -151,15 +151,15 @@ export default function AboutPage() {
       </section>
 
       {/* ── Our Story ── */}
-      <section className="py-[110px]">
-        <div className="max-w-[1280px] mx-auto px-20">
-          <div className="grid lg:grid-cols-2 gap-[80px] items-center">
+      <section className="py-[64px] lg:py-[110px]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
+          <div className="grid lg:grid-cols-2 gap-[40px] lg:gap-[80px] items-center">
 
             <div className="flex flex-col gap-[24px]">
               <p className="font-body text-[11px] uppercase tracking-[0.12em] text-warm-mid">
                 Our Story
               </p>
-              <h2 className="font-display font-medium text-[48px] text-warm-dark leading-[1.05] tracking-[-0.01em]">
+              <h2 className="font-display font-medium text-warm-dark leading-[1.05] tracking-[-0.01em]" style={{ fontSize: "clamp(28px, 5vw, 48px)" }}>
                 Born from a belief<br />in better travel
               </h2>
               <div className="flex flex-col gap-[18px] font-body text-[16px] text-warm-mid leading-[1.75]">
@@ -204,7 +204,7 @@ export default function AboutPage() {
             <div className="relative">
               <div
                 className="rounded-[22px] overflow-hidden"
-                style={{ height: "560px", boxShadow: "0 12px 48px rgba(26,15,13,0.16)" }}
+                style={{ height: "clamp(280px, 45vw, 560px)", boxShadow: "0 12px 48px rgba(26,15,13,0.16)" }}
               >
                 <img
                   src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80"
@@ -218,7 +218,7 @@ export default function AboutPage() {
               </div>
               {/* Floating established card */}
               <div
-                className="absolute bottom-[-20px] right-[-24px] rounded-[18px] px-[24px] py-[20px] flex flex-col items-center gap-[4px]"
+                className="hidden lg:flex absolute bottom-[-20px] right-[-24px] rounded-[18px] px-[24px] py-[20px] flex-col items-center gap-[4px]"
                 style={{
                   background: "linear-gradient(135deg, #5C1828, #8B2A3F)",
                   boxShadow: "0 8px 32px rgba(92,24,40,0.35)",
@@ -234,14 +234,14 @@ export default function AboutPage() {
       </section>
 
       {/* ── Meet the Team ── */}
-      <section className="py-[110px]" style={{ background: "linear-gradient(160deg, #F5EAED 0%, #FAF7F2 50%, #EDE0CC 100%)" }}>
-        <div className="max-w-[1280px] mx-auto px-20">
+      <section className="py-[64px] lg:py-[110px]" style={{ background: "linear-gradient(160deg, #F5EAED 0%, #FAF7F2 50%, #EDE0CC 100%)" }}>
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
 
-          <div className="mb-[56px]">
+          <div className="mb-[40px] lg:mb-[56px]">
             <p className="font-body text-[11px] uppercase tracking-[0.12em] text-warm-mid mb-[12px]">
               Our People
             </p>
-            <h2 className="font-display font-medium text-[48px] text-warm-dark leading-[1.05]">
+            <h2 className="font-display font-medium text-warm-dark leading-[1.05]" style={{ fontSize: "clamp(28px, 5vw, 48px)" }}>
               Meet your agents
             </h2>
           </div>
@@ -320,7 +320,7 @@ export default function AboutPage() {
 
       {/* ── Accreditations ── */}
       <section
-        className="relative overflow-hidden py-[100px]"
+        className="relative overflow-hidden py-[64px] lg:py-[100px]"
         style={{ background: "linear-gradient(160deg, #1A0F0D 0%, #0F0604 100%)" }}
       >
         {/* Gold top rule */}
@@ -335,10 +335,10 @@ export default function AboutPage() {
           style={{ background: "radial-gradient(ellipse 70% 55% at 30% 50%, rgba(201,168,76,0.05) 0%, transparent 70%)" }}
         />
 
-        <div className="relative max-w-[1280px] mx-auto px-20">
+        <div className="relative max-w-[1280px] mx-auto px-6 lg:px-20">
 
           {/* ── Section header ── */}
-          <div className="grid lg:grid-cols-[1fr_auto] gap-[40px] items-end mb-[56px]">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-[24px] lg:gap-[40px] items-end mb-[40px] lg:mb-[56px]">
             <div>
               <p
                 className="font-body text-[11px] uppercase tracking-[0.14em] mb-[14px]"
@@ -426,7 +426,7 @@ export default function AboutPage() {
 
           {/* ── Bottom trust stats bar ── */}
           <div
-            className="rounded-[20px] px-[40px] py-[28px] grid grid-cols-2 sm:grid-cols-4 gap-[32px]"
+            className="rounded-[20px] px-[20px] lg:px-[40px] py-[24px] lg:py-[28px] grid grid-cols-2 sm:grid-cols-4 gap-[24px] lg:gap-[32px]"
             style={{
               background: "rgba(201,168,76,0.06)",
               border: "1px solid rgba(201,168,76,0.14)",

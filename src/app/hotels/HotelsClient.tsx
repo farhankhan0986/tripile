@@ -10,10 +10,10 @@ import { SlidersHorizontal, ArrowUpDown } from "lucide-react";
 function SkeletonCard() {
   return (
     <div
-      className="rounded-[18px] flex overflow-hidden animate-pulse"
-      style={{ background: "#fff", border: "1px solid #EDE0CC", boxShadow: "0 2px 12px rgba(26,15,13,0.05)", minHeight: "180px" }}
+      className="rounded-[18px] flex flex-col sm:flex-row overflow-hidden animate-pulse"
+      style={{ background: "#fff", border: "1px solid #EDE0CC", boxShadow: "0 2px 12px rgba(26,15,13,0.05)" }}
     >
-      <div className="w-[220px] shrink-0" style={{ background: "#EDE0CC" }} />
+      <div className="w-full sm:w-[220px] h-[200px] sm:h-auto shrink-0" style={{ background: "#EDE0CC" }} />
       <div className="flex-1 p-[24px] flex flex-col justify-between gap-[16px]">
         <div className="flex flex-col gap-[10px]">
           <div className="h-[22px] w-[55%] rounded-full" style={{ background: "#EDE0CC" }} />
@@ -92,7 +92,7 @@ export default function HotelsClient() {
     <div className="flex flex-col min-h-screen" style={{ background: "#FAF7F2" }}>
 
       {/* ── Hero / Search Header ── */}
-      <div className="relative pt-[110px] pb-[60px]">
+      <div className="relative pt-[90px] pb-[40px] sm:pt-[110px] sm:pb-[60px]">
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -124,7 +124,7 @@ export default function HotelsClient() {
             </span>
           </div>
 
-          <h1 className="font-display font-semibold text-[44px] text-white leading-[1.05] tracking-[-0.01em] text-center mb-[4px]">
+          <h1 className="font-display font-semibold text-white leading-[1.05] tracking-[-0.01em] text-center mb-[4px]" style={{ fontSize: "clamp(28px, 5vw, 44px)" }}>
             Find your perfect hotel
           </h1>
           <p className="font-body text-[15px] text-white/65 text-center mb-[24px]">

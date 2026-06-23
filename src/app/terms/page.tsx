@@ -63,7 +63,7 @@ export default function TermsPage() {
           background: "linear-gradient(160deg, #1A0F0D 0%, #5C1828 55%, #3D0E1A 100%)",
         }}
       >
-        <div className="max-w-[1280px] mx-auto px-20 py-[90px]">
+        <div className="max-w-[1280px] mx-auto px-6 lg:px-20 py-[56px] lg:py-[90px]">
           <div
             className="inline-flex items-center gap-[8px] px-[14px] py-[7px] rounded-full mb-[28px]"
             style={{ background: "rgba(201,168,76,0.15)", border: "1px solid rgba(201,168,76,0.25)" }}
@@ -76,7 +76,7 @@ export default function TermsPage() {
               Legal
             </span>
           </div>
-          <h1 className="font-display font-semibold text-[68px] text-white leading-[0.97] tracking-[-0.02em] mb-[20px]">
+          <h1 className="font-display font-semibold text-white leading-[0.97] tracking-[-0.02em] mb-[20px]" style={{ fontSize: "clamp(36px, 6vw, 68px)" }}>
             Terms of Service
           </h1>
           <p className="font-body text-[16px] text-white/65 max-w-[540px] leading-[1.72] mb-[32px]">
@@ -97,12 +97,12 @@ export default function TermsPage() {
       />
 
       {/* ── Content ── */}
-      <section className="py-[96px]">
-        <div className="max-w-[900px] mx-auto px-20">
+      <section className="py-[48px] lg:py-[96px]">
+        <div className="max-w-[900px] mx-auto px-6 lg:px-20">
 
           {/* Intro note */}
           <div
-            className="rounded-[20px] p-[32px] mb-[56px] flex gap-[20px]"
+            className="rounded-[20px] p-[20px] lg:p-[32px] mb-[40px] lg:mb-[56px] flex flex-col sm:flex-row gap-[14px] sm:gap-[20px]"
             style={{
               background: "#fff",
               border: "1px solid #EDE0CC",
@@ -127,7 +127,7 @@ export default function TermsPage() {
             {terms.map(({ number, title, body }, i) => (
               <div
                 key={number}
-                className="flex gap-[24px] p-[32px]"
+                className="flex gap-[14px] lg:gap-[24px] p-[20px] lg:p-[32px]"
                 style={{
                   background: "#fff",
                   borderTop: i > 0 ? "1px solid #EDE0CC" : "none",
@@ -151,7 +151,7 @@ export default function TermsPage() {
 
           {/* Contact box */}
           <div
-            className="mt-[56px] rounded-[20px] p-[40px] text-center"
+            className="mt-[40px] lg:mt-[56px] rounded-[20px] p-[24px] lg:p-[40px] text-center"
             style={{
               background: "linear-gradient(135deg, #5C1828 0%, #3D0E1A 100%)",
               boxShadow: "0 12px 48px rgba(92,24,40,0.28)",

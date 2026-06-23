@@ -34,10 +34,10 @@ const features = [
 
 export default function WhyTripile() {
   return (
-    <section className="bg-ivory py-[100px] overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-20">
+    <section className="bg-ivory py-[64px] lg:py-[100px] overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
 
-        <div className="grid lg:grid-cols-2 gap-[64px] items-center">
+        <div className="grid lg:grid-cols-2 gap-[40px] lg:gap-[64px] items-center">
 
           {/* ── Left column ── */}
           <div className="flex flex-col">
@@ -48,7 +48,7 @@ export default function WhyTripile() {
             </p>
 
             {/* Headline */}
-            <h2 className="font-display font-medium text-[52px] text-warm-dark tracking-[-0.01em] leading-[1.05] mb-[20px]">
+            <h2 className="font-display font-medium text-warm-dark tracking-[-0.01em] leading-[1.05] mb-[20px]" style={{ fontSize: "clamp(28px, 5vw, 52px)" }}>
               4+ years of getting it right
             </h2>
 
@@ -124,7 +124,7 @@ export default function WhyTripile() {
             {/* Main image */}
             <div
               className="rounded-[22px] overflow-hidden"
-              style={{ height: "560px", boxShadow: "0 12px 48px rgba(26,15,13,0.18)" }}
+              style={{ height: "clamp(280px, 45vw, 560px)", boxShadow: "0 12px 48px rgba(26,15,13,0.18)" }}
             >
               <img
                 src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=900&q=80"
@@ -140,7 +140,7 @@ export default function WhyTripile() {
 
             {/* Floating review card bottom-left */}
             <div
-              className="absolute bottom-[-20px] left-[-28px] rounded-[18px] p-[20px] flex flex-col gap-[10px]"
+              className="hidden lg:flex absolute bottom-[-20px] left-[-28px] rounded-[18px] p-[20px] flex-col gap-[10px]"
               style={{
                 background: "rgba(255,255,255,0.95)",
                 backdropFilter: "blur(12px)",
@@ -169,7 +169,7 @@ export default function WhyTripile() {
 
             {/* Floating stat badge top-right */}
             <div
-              className="absolute top-[24px] right-[-20px] rounded-[16px] px-[20px] py-[16px] flex flex-col items-center gap-[2px]"
+              className="hidden lg:flex absolute top-[24px] right-[-20px] rounded-[16px] px-[20px] py-[16px] flex-col items-center gap-[2px]"
               style={{
                 background: "linear-gradient(135deg, #5C1828, #8B2A3F)",
                 boxShadow: "0 6px 24px rgba(92,24,40,0.35)",

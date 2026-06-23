@@ -31,32 +31,32 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-[110px]" style={{ background: "#FAF7F2" }}>
-      <div className="max-w-[1280px] mx-auto px-20">
+    <section className="py-[64px] lg:py-[110px]" style={{ background: "#FAF7F2" }}>
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
 
         {/* Heading row */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-[24px] mb-[72px]">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-[24px] mb-[40px] lg:mb-[72px]">
           <div>
             <p className="font-body text-[11px] uppercase tracking-[0.12em] text-warm-mid mb-[14px]">
               How it works
             </p>
-            <h2 className="font-display font-medium text-[52px] text-warm-dark leading-[1.02] tracking-[-0.01em] max-w-[400px]">
+            <h2 className="font-display font-medium text-warm-dark leading-[1.02] tracking-[-0.01em] max-w-[400px]" style={{ fontSize: "clamp(28px, 5vw, 52px)" }}>
               Simple from start to finish
             </h2>
           </div>
           <p className="font-body text-[15px] text-warm-mid leading-[1.75] max-w-[360px] lg:text-right pb-[4px]">
-            Three steps and you're on your way  with a real person available every step of the journey.
+            Three steps and you&apos;re on your way with a real person available every step of the journey.
           </p>
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-[2px]" style={{ borderRadius: "20px", overflow: "hidden" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-[12px] lg:gap-[2px]" style={{ borderRadius: "20px", overflow: "hidden" }}>
           {steps.map(({ number, Icon, title, description, detail }, i) => {
             const isMiddle = i === 1;
             return (
               <div
                 key={title}
-                className="relative flex flex-col justify-between p-[40px] gap-[48px] group"
+                className="relative flex flex-col justify-between p-[24px] lg:p-[40px] gap-[32px] lg:gap-[48px] group"
                 style={{
                   background: isMiddle
                     ? "linear-gradient(145deg, #5C1828 0%, #8B2A3F 100%)"

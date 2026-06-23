@@ -20,21 +20,21 @@ export default function Hero({ activeTab, setActiveTab }: HeroProps) {
   return (
     <section className="relative w-full h-screen bg-warm-dark overflow-hidden">
 
-      {/* ── Video backgrounds ── */}
+      {/* ── Image backgrounds ── */}
       <div className="absolute inset-0 z-0">
-        <video
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
           style={{ opacity: activeTab === "flights" ? 1 : 0 }}
-          autoPlay muted loop playsInline
-          src="/videos/flights.mp4"
-          onError={(e) => { (e.currentTarget as HTMLVideoElement).style.display = "none"; }}
+          src="https://images.unsplash.com/photo-1593182440709-4b7b56482c55?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Flights hero background"
         />
-        <video
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
           style={{ opacity: activeTab === "hotels" ? 1 : 0 }}
-          autoPlay muted loop playsInline
-          src="/videos/hotel.mp4"
-          onError={(e) => { (e.currentTarget as HTMLVideoElement).style.display = "none"; }}
+          src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Hotels hero background"
         />
       </div>
 
@@ -57,7 +57,7 @@ export default function Hero({ activeTab, setActiveTab }: HeroProps) {
 
         {/* Eyebrow */}
         <p
-          className="font-body text-[11px] uppercase tracking-[0.20em] mb-[32px]"
+          className="font-body text-[11px] uppercase tracking-[0.20em] mb-[20px] sm:mb-[32px]"
           style={{ color: "rgba(255,255,255,0.45)", letterSpacing: "0.20em" }}
         >
           Tripile · Est. 2022
@@ -65,8 +65,8 @@ export default function Hero({ activeTab, setActiveTab }: HeroProps) {
 
         {/* Headline */}
         <h1
-          className="font-display font-semibold text-white leading-[0.94] tracking-[-0.025em] mb-[28px]"
-          style={{ fontSize: "clamp(56px, 8vw, 100px)" }}
+          className="font-display font-semibold text-white leading-[0.94] tracking-[-0.025em] mb-[20px] sm:mb-[28px]"
+          style={{ fontSize: "clamp(44px, 8vw, 100px)" }}
         >
           Travel the world<br />
           with{" "}
@@ -85,7 +85,7 @@ export default function Hero({ activeTab, setActiveTab }: HeroProps) {
 
         {/* Sub-copy */}
         <p
-          className="font-body leading-[1.75] mb-[48px] max-w-[420px]"
+          className="font-body leading-[1.75] mb-[28px] sm:mb-[48px] max-w-[420px]"
           style={{ fontSize: "17px", color: "rgba(255,255,255,0.58)" }}
         >
           Real agents. No bots. No hold music.
@@ -101,7 +101,7 @@ export default function Hero({ activeTab, setActiveTab }: HeroProps) {
 
         {/* Stat strip */}
         <div
-          className="flex items-center gap-[32px] mt-[48px]"
+          className="flex items-center flex-wrap justify-center gap-[20px] sm:gap-[32px] mt-[28px] sm:mt-[48px]"
           style={{ opacity: 0.5 }}
         >
           {[
@@ -111,7 +111,7 @@ export default function Hero({ activeTab, setActiveTab }: HeroProps) {
           ].map(({ value, label }, i) => (
             <span key={label} className="flex items-baseline gap-[6px]">
               {i > 0 && (
-                <span className="w-px h-[14px] bg-white/20 mr-[32px] inline-block" />
+                <span className="hidden sm:inline-block w-px h-[14px] bg-white/20 mr-[20px] sm:mr-[32px]" />
               )}
               <span className="font-display font-medium text-[15px] text-white/80">{value}</span>
               <span className="font-body text-[11px] uppercase tracking-[0.08em] text-white/35">{label}</span>

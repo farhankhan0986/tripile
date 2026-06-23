@@ -84,7 +84,7 @@ export default function FlightsClient() {
     <div className="flex flex-col min-h-screen" style={{ background: "#FAF7F2" }}>
 
       {/* ── Hero / Search Header ── */}
-      <div className="relative pt-[110px] pb-[60px]">
+      <div className="relative pt-[90px] pb-[40px] sm:pt-[110px] sm:pb-[60px]">
         {/* Background image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -116,7 +116,7 @@ export default function FlightsClient() {
             </span>
           </div>
 
-          <h1 className="font-display font-semibold text-[44px] text-white leading-[1.05] tracking-[-0.01em] text-center mb-[4px]">
+          <h1 className="font-display font-semibold text-white leading-[1.05] tracking-[-0.01em] text-center mb-[4px]" style={{ fontSize: "clamp(28px, 5vw, 44px)" }}>
             Find your next flight
           </h1>
           <p className="font-body text-[15px] text-white/65 text-center mb-[24px]">
