@@ -180,6 +180,90 @@ const destinations: Destination[] = [
 const FEATURED = 3;
 const MEDIUM = 3;
 
+function MobileDestCard({
+  dest,
+  onClick,
+  compact = false,
+}: {
+  dest: Destination;
+  onClick: () => void;
+  compact?: boolean;
+}) {
+  return (
+    <div
+      onClick={onClick}
+      className="relative flex-shrink-0 rounded-[16px] overflow-hidden cursor-pointer group snap-start"
+      style={{
+        width: compact ? "130px" : "162px",
+        height: compact ? "178px" : "232px",
+        boxShadow: "0 4px 20px rgba(26,15,13,0.14)",
+      }}
+    >
+      <img
+        src={dest.image}
+        alt={dest.city}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(10,4,3,0.90) 0%, rgba(10,4,3,0.28) 55%, rgba(10,4,3,0.04) 100%)",
+        }}
+      />
+      {/* Price pill */}
+      <div
+        className="absolute top-[10px] right-[10px] px-[9px] py-[3px] rounded-full font-body font-semibold"
+        style={{
+          fontSize: "9px",
+          background: "linear-gradient(120deg, #C9A84C 0%, #E8C96A 100%)",
+          color: "#1A0F0D",
+          letterSpacing: "0.04em",
+        }}
+      >
+        from ${dest.price}
+      </div>
+      {/* Bottom info */}
+      <div
+        className="absolute bottom-0 left-0 right-0"
+        style={{ padding: compact ? "10px" : "14px" }}
+      >
+        <p
+          className="font-body uppercase tracking-[0.08em] mb-[3px]"
+          style={{ fontSize: "8px", color: "rgba(255,255,255,0.45)" }}
+        >
+          {dest.region}
+        </p>
+        <p
+          className="font-display font-semibold text-white leading-[1.0]"
+          style={{ fontSize: compact ? "15px" : "19px", letterSpacing: "-0.01em", marginBottom: compact ? "6px" : "9px" }}
+        >
+          {dest.city}
+        </p>
+        {!compact && (
+          <p
+            className="font-body text-white/60 leading-[1.45] mb-[8px] line-clamp-2"
+            style={{ fontSize: "11px" }}
+          >
+            {dest.snippet}
+          </p>
+        )}
+        <div
+          className="inline-flex items-center gap-[3px] font-body font-medium text-white rounded-full"
+          style={{
+            fontSize: "10px",
+            padding: compact ? "3px 8px" : "4px 10px",
+            background: "rgba(255,255,255,0.14)",
+            border: "1px solid rgba(255,255,255,0.22)",
+          }}
+        >
+          Explore <ArrowUpRight size={9} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function DestCard({
   dest,
   size,
@@ -359,40 +443,74 @@ export default function Destinations() {
             </p>
           </div>
 
-          {/* ── Featured row: 3 large cards ── */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-[14px] mb-[14px]">
-            {featured.map((dest) => (
-              <DestCard
-                key={dest.city}
-                dest={dest}
-                size="large"
-                onClick={() => setSelected(dest)}
-              />
-            ))}
+          {/* ── Mobile: two horizontal scroll rows ── */}
+          <div className="lg:hidden flex flex-col gap-[14px]">
+            {/* Row 1 — bigger cards (first 6) */}
+            <div
+              className="flex gap-[10px] overflow-x-auto pb-[2px] -mx-6 px-6 snap-x snap-mandatory"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+            >
+              {destinations.slice(0, 6).map((dest) => (
+                <MobileDestCard
+                  key={dest.city}
+                  dest={dest}
+                  onClick={() => setSelected(dest)}
+                />
+              ))}
+            </div>
+            {/* Row 2 — compact cards (last 6) */}
+            <div
+              className="flex gap-[10px] overflow-x-auto pb-[2px] -mx-6 px-6 snap-x snap-mandatory"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+            >
+              {destinations.slice(6).map((dest) => (
+                <MobileDestCard
+                  key={dest.city}
+                  dest={dest}
+                  compact
+                  onClick={() => setSelected(dest)}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* ── Medium row: 3 medium cards ── */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-[14px] mb-[14px]">
-            {medium.map((dest) => (
-              <DestCard
-                key={dest.city}
-                dest={dest}
-                size="medium"
-                onClick={() => setSelected(dest)}
-              />
-            ))}
-          </div>
+          {/* ── Desktop: 3-tier grid ── */}
+          <div className="hidden lg:block">
+            {/* Featured row: 3 large cards */}
+            <div className="grid grid-cols-3 gap-[14px] mb-[14px]">
+              {featured.map((dest) => (
+                <DestCard
+                  key={dest.city}
+                  dest={dest}
+                  size="large"
+                  onClick={() => setSelected(dest)}
+                />
+              ))}
+            </div>
 
-          {/* ── Small row: remaining as 2-col then 3-col ── */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[14px]">
-            {small.map((dest) => (
-              <DestCard
-                key={dest.city}
-                dest={dest}
-                size="small"
-                onClick={() => setSelected(dest)}
-              />
-            ))}
+            {/* Medium row: 3 medium cards */}
+            <div className="grid grid-cols-3 gap-[14px] mb-[14px]">
+              {medium.map((dest) => (
+                <DestCard
+                  key={dest.city}
+                  dest={dest}
+                  size="medium"
+                  onClick={() => setSelected(dest)}
+                />
+              ))}
+            </div>
+
+            {/* Small row: 6 small cards */}
+            <div className="grid grid-cols-6 gap-[14px]">
+              {small.map((dest) => (
+                <DestCard
+                  key={dest.city}
+                  dest={dest}
+                  size="small"
+                  onClick={() => setSelected(dest)}
+                />
+              ))}
+            </div>
           </div>
 
           {/* ── Bottom trust nudge ── */}

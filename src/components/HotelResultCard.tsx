@@ -57,7 +57,7 @@ export default function HotelResultCard({ result }: { result: HotelResult }) {
           style={{ background: "rgba(201,168,76,0.92)", backdropFilter: "blur(6px)" }}
         >
           {Array.from({ length: stars }).map((_, i) => (
-            <Star key={i} size={10} fill="#1A0F0D" style={{ color: "#1A0F0D" }} />
+            <Star key={i} size={10} fill="gold" style={{ color: "gold" }} />
           ))}
         </div>
         {/* Rating badge bottom */}
@@ -117,16 +117,16 @@ export default function HotelResultCard({ result }: { result: HotelResult }) {
               <span className="font-body text-[13px] text-warm-mid">/night</span>
             </div>
             <p className="font-body text-[11px] text-warm-mid mt-[3px]">
-              Taxes may apply · Free cancellation
+              Taxes may apply/Free cancellation
             </p>
           </div>
 
           <div className="flex items-center gap-[8px]">
             <Button variant="ghost">
               <Phone size={13} aria-hidden />
-              Call us
+              Call
             </Button>
-            <Button variant="primary">Book now</Button>
+            <Button variant="primary">Book</Button>
           </div>
         </div>
 
