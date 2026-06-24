@@ -424,10 +424,15 @@ export default function HotelResultCard({ result }: { result: Hotel }) {
               </p>
             </div>
             <div className="flex items-center gap-[8px]">
-              <Button variant="ghost" onClick={() => alert(`Call us to book this flight:\n\n1-800-963-4330`)}>
-                                  <Phone size={13} aria-hidden />
-                                  Call us
-                                </Button>
+              <Button
+  
+  variant="ghost"
+>
+  <a className="flex items-center gap-[5px]" href={`tel:${PHONE}`}>
+    <Phone size={13} aria-hidden />
+    Call us
+  </a>
+</Button>
               <Button variant="primary" onClick={() => setModal("book")}>
                 Reserve now
               </Button>

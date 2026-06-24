@@ -428,10 +428,15 @@ export default function FlightResultCard({ result }: { result: FlightResult }) {
                   <p className="font-body text-[11px] text-warm-mid mt-[2px]">per person</p>
                 </div>
                 <div className="flex items-center gap-[8px]">
-                  <Button variant="ghost" onClick={() => alert(`Call us to book this flight:\n\n${PHONE}`)}>
-                    <Phone size={13} aria-hidden />
-                    Call us
-                  </Button>
+                  <Button
+  
+  variant="ghost"
+>
+  <a className="flex items-center gap-[5px]" href={`tel:${PHONE}`}>
+    <Phone size={13} aria-hidden />
+    Call us
+  </a>
+</Button>
                   <Button variant="primary" onClick={() => setModalOpen(true)}>
                     Book now
                     <ArrowRight size={13} aria-hidden />
