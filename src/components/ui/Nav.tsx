@@ -61,13 +61,19 @@ export default function Nav() {
               {link.label}
             </a>
           ))}
-          <Button variant="phone">Call Us</Button>
+          <a
+            href="tel:1-800-963-4330"
+            className="inline-flex items-center gap-2 h-9 px-4 border border-transparent font-body font-medium text-sm rounded-btn transition-colors duration-200 bg-burg-deep text-white hover:bg-burg-mid"
+          >
+            <Phone size={14} aria-hidden />
+            Call Us &nbsp;·&nbsp; 1-800-963-4330
+          </a>
         </div>
 
         {/* Mobile right controls */}
         <div className="flex md:hidden items-center gap-2">
           <a
-            href="tel:1-800-874-7453"
+            href="tel:1-800-963-4330"
             className="flex items-center gap-[6px] font-body font-medium text-[13px] h-[38px] px-[14px] rounded-[6px] bg-burg-deep text-white transition-opacity duration-200 hover:opacity-90"
           >
             <Phone size={13} aria-hidden />
@@ -113,12 +119,12 @@ export default function Nav() {
 
           <div className="px-6 pb-[44px] flex flex-col items-center gap-[10px]">
             <a
-              href="tel:1-800-874-7453"
+              href="tel:1-800-963-4330"
               className="w-full flex items-center justify-center gap-[8px] h-[54px] rounded-[10px] font-body font-semibold text-[16px] text-white transition-opacity duration-200 hover:opacity-90"
               style={{ background: "#5C1828" }}
             >
               <Phone size={16} aria-hidden />
-              Call 1-800-TRIPILE
+              Call 1-800-963-4330
             </a>
             <p className="font-body text-[12px] text-white/30 text-center">
               Mon &ndash; Sat &nbsp;&middot;&nbsp; 8am &ndash; 9pm Eastern

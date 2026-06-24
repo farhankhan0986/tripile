@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Nav from "@/components/ui/Nav";
 import FlightsClient from "./FlightsClient";
 
@@ -11,7 +12,9 @@ export default function FlightsPage() {
   return (
     <>
       <Nav />
-      <FlightsClient />
+      <Suspense>
+        <FlightsClient />
+      </Suspense>
     </>
   );
 }

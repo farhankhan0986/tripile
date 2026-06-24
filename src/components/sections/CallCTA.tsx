@@ -103,11 +103,11 @@ export default function CallCTA() {
               </p>
 
               <a
-                href="tel:1-800-874-7453"
+                href="tel:1-800-963-4330"
                 className="font-display font-semibold text-white leading-none tracking-[-0.02em] hover:text-gold-accent transition-colors duration-200"
                 style={{ fontSize: "clamp(26px, 5vw, 44px)" }}
               >
-                1-800-TRIPILE
+                1-800-963-4330
               </a>
 
               {/* Divider */}

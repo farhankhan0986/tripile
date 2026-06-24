@@ -445,7 +445,7 @@ export default function Destinations() {
 
           {/* ── Mobile: two horizontal scroll rows ── */}
           <div className="lg:hidden flex flex-col gap-[14px]">
-            {/* Row 1 — bigger cards (first 6) */}
+            {/* Row 1 - bigger cards (first 6) */}
             <div
               className="flex gap-[10px] overflow-x-auto pb-[2px] -mx-6 px-6 snap-x snap-mandatory"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
@@ -458,7 +458,7 @@ export default function Destinations() {
                 />
               ))}
             </div>
-            {/* Row 2 — compact cards (last 6) */}
+            {/* Row 2 - compact cards (last 6) */}
             <div
               className="flex gap-[10px] overflow-x-auto pb-[2px] -mx-6 px-6 snap-x snap-mandatory"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
