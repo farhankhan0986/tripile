@@ -29,10 +29,12 @@ type HotelValues = {
 export type SearchValues = FlightValues | HotelValues;
 
 interface PageSearchBoxProps {
-  activeTab:    "flights" | "hotels";
-  setActiveTab: (tab: "flights" | "hotels") => void;
-  className?:   string;
-  onSearch?:    (values: SearchValues) => void;
+  activeTab:          "flights" | "hotels";
+  setActiveTab:       (tab: "flights" | "hotels") => void;
+  className?:         string;
+  onSearch?:          (values: SearchValues) => void;
+  initialToIata?:     string;
+  initialToDisplay?:  string;
 }
 
 const CABIN_OPTIONS = [
@@ -179,14 +181,15 @@ function fmt(d: Date | undefined) {
 
 export default function PageSearchBox({
   activeTab, setActiveTab, className, onSearch,
+  initialToIata = "", initialToDisplay = "",
 }: PageSearchBoxProps) {
   const router = useRouter();
 
   // Flight state
   const [fromIata, setFromIata]       = useState("");
   const [fromDisplay, setFromDisplay] = useState("");
-  const [toIata, setToIata]           = useState("");
-  const [toDisplay, setToDisplay]     = useState("");
+  const [toIata, setToIata]           = useState(initialToIata);
+  const [toDisplay, setToDisplay]     = useState(initialToDisplay);
   const [departure, setDeparture]     = useState<Date | undefined>();
   const [returnDate, setReturnDate]   = useState<Date | undefined>();
   const [tripType, setTripType]       = useState<"one_way" | "return">("one_way");

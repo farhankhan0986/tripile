@@ -133,6 +133,12 @@ export default function FlightsClient() {
     setLoading(true);
     setError("");
     setHasSearched(true);
+     setTimeout(() => {
+        window.scrollBy({
+          top: 400,
+          behavior: "smooth",
+        });
+      }, 300);
     try {
       const res = await fetch("/api/flights/search", {
         method:  "POST",
@@ -141,6 +147,7 @@ export default function FlightsClient() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? `Search failed: ${res.status}`);
+     
       setResults(data.results ?? []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again or call us.");
@@ -198,6 +205,8 @@ export default function FlightsClient() {
             setActiveTab={setActiveTab}
             className="w-full max-w-4xl"
             onSearch={handleSearch}
+            initialToIata={searchParams.get("destination") ?? ""}
+            initialToDisplay={searchParams.get("destinationCity") ?? ""}
           />
         </div>
       </div>

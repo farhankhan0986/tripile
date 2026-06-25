@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { X, Phone, Clock, Calendar, MapPin, Star, ArrowUpRight } from "lucide-react";
 
 type Destination = {
   city: string;
+  iata: string;
   region: string;
   country: string;
   price: number;
@@ -20,6 +22,7 @@ type Destination = {
 const destinations: Destination[] = [
   {
     city: "Miami",
+    iata: "MIA",
     region: "Florida",
     country: "USA",
     price: 189,
@@ -33,6 +36,7 @@ const destinations: Destination[] = [
   },
   {
     city: "Orlando",
+    iata: "MCO",
     region: "Florida",
     country: "USA",
     price: 210,
@@ -46,6 +50,7 @@ const destinations: Destination[] = [
   },
   {
     city: "Las Vegas",
+    iata: "LAS",
     region: "Nevada",
     country: "USA",
     price: 245,
@@ -59,6 +64,7 @@ const destinations: Destination[] = [
   },
   {
     city: "Cancun",
+    iata: "CUN",
     region: "Quintana Roo",
     country: "Mexico",
     price: 299,
@@ -72,6 +78,7 @@ const destinations: Destination[] = [
   },
   {
     city: "New Orleans",
+    iata: "MSY",
     region: "Louisiana",
     country: "USA",
     price: 219,
@@ -85,6 +92,7 @@ const destinations: Destination[] = [
   },
   {
     city: "Sedona",
+    iata: "PHX",
     region: "Arizona",
     country: "USA",
     price: 269,
@@ -98,6 +106,7 @@ const destinations: Destination[] = [
   },
   {
     city: "Savannah",
+    iata: "SAV",
     region: "Georgia",
     country: "USA",
     price: 198,
@@ -111,6 +120,7 @@ const destinations: Destination[] = [
   },
   {
     city: "Maui",
+    iata: "OGG",
     region: "Hawaii",
     country: "USA",
     price: 449,
@@ -124,6 +134,7 @@ const destinations: Destination[] = [
   },
   {
     city: "Nashville",
+    iata: "BNA",
     region: "Tennessee",
     country: "USA",
     price: 178,
@@ -137,6 +148,7 @@ const destinations: Destination[] = [
   },
   {
     city: "San Diego",
+    iata: "SAN",
     region: "California",
     country: "USA",
     price: 238,
@@ -150,6 +162,7 @@ const destinations: Destination[] = [
   },
   {
     city: "Charleston",
+    iata: "CHS",
     region: "South Carolina",
     country: "USA",
     price: 195,
@@ -163,6 +176,7 @@ const destinations: Destination[] = [
   },
   {
     city: "Puerto Rico",
+    iata: "SJU",
     region: "Caribbean",
     country: "USA Territory",
     price: 268,
@@ -394,6 +408,7 @@ function DestCard({
 }
 
 export default function Destinations() {
+  const router = useRouter();
   const [selected, setSelected] = useState<Destination | null>(null);
 
   useEffect(() => {
@@ -744,7 +759,7 @@ export default function Destinations() {
                 {/* Buttons */}
                 <div className="flex gap-[10px]">
                   <a
-                    href="tel:1-800-874-7453"
+                    href="tel:1-800-963-4330"
                     className="flex-1 inline-flex items-center justify-center gap-[7px] font-body font-medium rounded-[8px] h-[40px] transition-all duration-200 hover:opacity-85"
                     style={{
                       fontSize: "13px",
@@ -757,6 +772,11 @@ export default function Destinations() {
                     Call us
                   </a>
                   <button
+                    onClick={() => {
+                      router.push(
+                        `/flights?destination=${selected.iata}&destinationCity=${encodeURIComponent(selected.city)}`,
+                      );
+                    }}
                     className="flex-[2] inline-flex items-center justify-center gap-[7px] font-body font-medium text-white rounded-[8px] h-[40px] transition-all duration-200 hover:opacity-90"
                     style={{
                       fontSize: "13px",

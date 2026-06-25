@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 const links: { label: string; href: string }[] = [
   { label: "Flights",      href: "/flights"       },
   { label: "Hotels",       href: "/hotels"        },
+  { label: "Deals",        href: "/deals"         },
   { label: "About",        href: "/about"         },
   { label: "Contact",      href: "/contact"       },
   { label: "Sign In",      href: "/login"         },
