@@ -314,6 +314,7 @@ function HotelsInner() {
             setActiveTab={() => {}}
             onSearch={handleSearchBoxSearch}
             className="w-full max-w-[820px]"
+            hideTabs
           />
         </div>
       </div>

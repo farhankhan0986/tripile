@@ -1,21 +1,173 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
-import Button from "@/components/ui/Button";
+import { useEffect, useRef, useState } from "react";
+import { useSession, signOut } from "next-auth/react";
+import {
+  Menu, X, Phone, LayoutDashboard, LogOut,
+  ChevronDown, CreditCard, Settings, AlertCircle, CheckCircle2,
+} from "lucide-react";
 
-const links: { label: string; href: string }[] = [
-  { label: "Flights",      href: "/flights"       },
-  { label: "Hotels",       href: "/hotels"        },
-  { label: "Deals",        href: "/deals"         },
-  { label: "About",        href: "/about"         },
-  { label: "Contact",      href: "/contact"       },
-  { label: "Sign In",      href: "/login"         },
+const NAV_LINKS: { label: string; href: string }[] = [
+  { label: "Flights", href: "/flights" },
+  { label: "Hotels",  href: "/hotels"  },
+  { label: "Deals",   href: "/deals"   },
+  { label: "About",   href: "/about"   },
+  { label: "Contact", href: "/contact" },
 ];
 
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function getInitials(name?: string | null): string {
+  if (!name) return "?";
+  return name.trim().split(/\s+/).map((w) => w[0]?.toUpperCase() ?? "").slice(0, 2).join("");
+}
+
+type SessionUser = {
+  name?: string | null;
+  email?: string | null;
+  emailVerified?: boolean;
+  role?: string;
+};
+
+// ── User dropdown ─────────────────────────────────────────────────────────────
+
+function UserMenu({ user, scrolled }: { user: SessionUser; scrolled: boolean }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handler(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    if (open) document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [open]);
+
+  const initials = getInitials(user.name);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className="flex items-center gap-[8px] px-[10px] py-[6px] rounded-full transition-all duration-200 hover:opacity-80"
+        style={{
+          background: open ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.08)",
+          border: "1px solid rgba(255,255,255,0.16)",
+        }}
+      >
+        {/* Avatar */}
+        <div
+          className="w-[28px] h-[28px] rounded-full flex items-center justify-center font-body font-bold text-[11px] shrink-0"
+          style={{ background: "linear-gradient(135deg, #5C1828, #8B2A3F)", color: "#fff" }}
+        >
+          {initials}
+        </div>
+        <span
+          className="hidden lg:block font-body text-[13px] font-medium max-w-[110px] truncate"
+          style={{ color: scrolled ? "#1A0F0D" : "#fff" }}
+        >
+          {user.name?.split(" ")[0] ?? "Account"}
+        </span>
+        <ChevronDown
+          size={13}
+          style={{
+            color: scrolled ? "#6B5244" : "rgba(255,255,255,0.65)",
+            transform: open ? "rotate(180deg)" : "rotate(0)",
+            transition: "transform 0.2s",
+          }}
+        />
+      </button>
+
+      {/* Dropdown */}
+      {open && (
+        <div
+          className="absolute right-0 top-[calc(100%+8px)] w-[240px] rounded-[16px] py-[6px] z-[9999]"
+          style={{
+            background: "#FAF7F2",
+            border: "1px solid #EDE0CC",
+            boxShadow: "0 16px 48px rgba(26,15,13,0.16)",
+          }}
+        >
+          {/* User info header */}
+          <div className="px-[16px] pt-[12px] pb-[10px]" style={{ borderBottom: "1px solid #EDE0CC" }}>
+            <div className="flex items-center gap-[10px]">
+              <div
+                className="w-[36px] h-[36px] rounded-full flex items-center justify-center font-body font-bold text-[13px] shrink-0"
+                style={{ background: "linear-gradient(135deg, #5C1828, #8B2A3F)", color: "#fff" }}
+              >
+                {initials}
+              </div>
+              <div className="min-w-0">
+                <p className="font-body font-semibold text-[13px] truncate" style={{ color: "#1A0F0D" }}>
+                  {user.name}
+                </p>
+                <p className="font-body text-[11px] truncate" style={{ color: "#A89282" }}>
+                  {user.email}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Menu items */}
+          <div className="py-[4px]">
+            <a
+              href="/dashboard"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-[10px] px-[16px] py-[10px] transition-colors hover:bg-[#F5EAED]"
+            >
+              <LayoutDashboard size={14} style={{ color: "#5C1828" }} />
+              <span className="font-body text-[13px] font-medium" style={{ color: "#1A0F0D" }}>Dashboard</span>
+            </a>
+
+            {/* Future: bookings */}
+            <div className="flex items-center gap-[10px] px-[16px] py-[10px] opacity-40 cursor-not-allowed">
+              <CreditCard size={14} style={{ color: "#A89282" }} />
+              <span className="font-body text-[13px]" style={{ color: "#6B5244" }}>My Bookings</span>
+              <span
+                className="ml-auto font-body text-[9px] uppercase tracking-[0.06em] px-[6px] py-[2px] rounded-full"
+                style={{ background: "#F5EAED", color: "#8B2A3F" }}
+              >
+                Soon
+              </span>
+            </div>
+
+            {/* Future: settings */}
+            <div className="flex items-center gap-[10px] px-[16px] py-[10px] opacity-40 cursor-not-allowed">
+              <Settings size={14} style={{ color: "#A89282" }} />
+              <span className="font-body text-[13px]" style={{ color: "#6B5244" }}>Account Settings</span>
+              <span
+                className="ml-auto font-body text-[9px] uppercase tracking-[0.06em] px-[6px] py-[2px] rounded-full"
+                style={{ background: "#F5EAED", color: "#8B2A3F" }}
+              >
+                Soon
+              </span>
+            </div>
+          </div>
+
+          {/* Sign out */}
+          <div style={{ borderTop: "1px solid #EDE0CC" }} className="py-[4px]">
+            <button
+              type="button"
+              onClick={() => { setOpen(false); signOut({ callbackUrl: "/" }); }}
+              className="w-full flex items-center gap-[10px] px-[16px] py-[10px] transition-colors hover:bg-[#F5EAED]"
+            >
+              <LogOut size={14} style={{ color: "#8B2A3F" }} />
+              <span className="font-body text-[13px] font-medium" style={{ color: "#8B2A3F" }}>Sign out</span>
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Nav ───────────────────────────────────────────────────────────────────────
+
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { data: session, status } = useSession();
+  const [scrolled, setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen]   = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -28,6 +180,10 @@ export default function Nav() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
+  const isSignedIn = status === "authenticated" && !!session?.user;
+  const user       = session?.user as SessionUser | undefined;
+  const linkColor  = scrolled ? "text-warm-dark opacity-75 hover:opacity-100" : "text-white/80 hover:text-white";
+
   return (
     <>
       <nav
@@ -36,6 +192,7 @@ export default function Nav() {
           scrolled ? "bg-white/15 backdrop-blur-md" : "bg-transparent",
         ].join(" ")}
       >
+        {/* Logo */}
         <a
           href="/"
           className={[
@@ -46,30 +203,39 @@ export default function Nav() {
           Tripile
         </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={[
-                "font-body text-[14px] transition-colors duration-300",
-                scrolled
-                  ? "text-warm-dark opacity-75 hover:opacity-100"
-                  : "text-white/80 hover:text-white",
-              ].join(" ")}
-            >
+        {/* Desktop right controls — links + actions all on the right */}
+        <div className="hidden md:flex items-center gap-6">
+          {NAV_LINKS.map((link) => (
+            <a key={link.href} href={link.href} className={`font-body text-[14px] transition-colors duration-300 ${linkColor}`}>
               {link.label}
             </a>
           ))}
+
           <a
             href="tel:1-800-963-4330"
             className="inline-flex items-center gap-2 h-9 px-4 border border-transparent font-body font-medium text-sm rounded-btn transition-colors duration-200 bg-burg-deep text-white hover:bg-burg-mid"
           >
             <Phone size={14} aria-hidden />
-            Call Us &nbsp;·&nbsp; 1-800-963-4330
+            Call Us
           </a>
+
+          {isSignedIn && user ? (
+            <UserMenu user={user} scrolled={scrolled} />
+          ) : (
+            <a
+              href="/login"
+              className="font-body text-[14px] font-medium px-[14px] py-[7px] rounded-full transition-all duration-200"
+              style={{
+                background: "rgba(255,255,255,0.10)",
+                border: "1px solid rgba(255,255,255,0.20)",
+                color: scrolled ? "#1A0F0D" : "#fff",
+              }}
+            >
+              Sign In
+            </a>
+          )}
         </div>
+        {/* (right controls block closed above) */}
 
         {/* Mobile right controls */}
         <div className="flex md:hidden items-center gap-2">
@@ -96,16 +262,12 @@ export default function Nav() {
       {menuOpen && (
         <div
           className="fixed inset-0 z-40 md:hidden flex flex-col"
-          style={{
-            background: "rgba(12,5,3,0.97)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-          }}
+          style={{ background: "rgba(12,5,3,0.97)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }}
         >
           <div className="h-[72px] shrink-0" />
 
           <div className="flex-1 flex flex-col items-center justify-center px-6">
-            {links.map(({ label, href }) => (
+            {NAV_LINKS.map(({ label, href }) => (
               <a
                 key={href}
                 href={href}
@@ -116,6 +278,37 @@ export default function Nav() {
                 {label}
               </a>
             ))}
+
+            {/* Auth entry in mobile menu */}
+            {isSignedIn && user ? (
+              <>
+                <a
+                  href="/dashboard"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-center font-body text-[20px] text-white/75 hover:text-white py-[18px] transition-colors duration-200"
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+                >
+                  Dashboard
+                </a>
+                <button
+                  type="button"
+                  onClick={() => { setMenuOpen(false); signOut({ callbackUrl: "/" }); }}
+                  className="w-full text-center font-body text-[20px] py-[18px] transition-colors duration-200"
+                  style={{ color: "#8B2A3F", borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+                >
+                  Sign Out
+                </button>
+              </>
+            ) : (
+              <a
+                href="/login"
+                onClick={() => setMenuOpen(false)}
+                className="w-full text-center font-body text-[20px] text-white/75 hover:text-white py-[18px] transition-colors duration-200"
+                style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+              >
+                Sign In
+              </a>
+            )}
           </div>
 
           <div className="px-6 pb-[44px] flex flex-col items-center gap-[10px]">

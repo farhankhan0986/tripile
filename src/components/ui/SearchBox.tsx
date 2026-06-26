@@ -40,6 +40,7 @@ interface SearchBoxProps {
   setActiveTab: (tab: "flights" | "hotels") => void;
   className?:   string;
   onSearch?:    (values: SearchValues) => void;
+  hideTabs?:    boolean;
 }
 
 const CABIN_OPTIONS = [
@@ -200,7 +201,7 @@ function fmt(d: Date | undefined) {
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function SearchBox({
-  activeTab, setActiveTab, className, onSearch,
+  activeTab, setActiveTab, className, onSearch, hideTabs = false,
 }: SearchBoxProps) {
   const router = useRouter();
 
@@ -285,24 +286,35 @@ export default function SearchBox({
         {/* ── Top row: tabs + flight options ── */}
         <div className="flex flex-wrap items-center justify-between gap-[8px] px-[16px] pt-[14px] pb-[2px]">
 
-          {/* Both tabs visible */}
-          <div className="flex gap-[4px]">
-            {(["flights", "hotels"] as const).map((tab) => (
-              <button
-                key={tab}
-                type="button"
-                onClick={() => setActiveTab(tab)}
-                className="capitalize px-[16px] py-[6px] rounded-full font-body font-medium text-[13px] transition-all duration-200"
-                style={
-                  activeTab === tab
-                    ? { background: "#5C1828", color: "#fff", boxShadow: "0 2px 8px rgba(92,24,40,0.40)" }
-                    : { background: "transparent", color: "rgba(255,255,255,0.55)" }
-                }
+          {/* Tab switcher: show both tabs, or just the Hotels label when hideTabs=true */}
+          {hideTabs ? (
+            <div className="flex gap-[4px]">
+              <span
+                className="capitalize px-[16px] py-[6px] rounded-full font-body font-medium text-[13px]"
+                style={{ background: "#5C1828", color: "#fff", boxShadow: "0 2px 8px rgba(92,24,40,0.40)" }}
               >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
-          </div>
+                Hotels
+              </span>
+            </div>
+          ) : (
+            <div className="flex gap-[4px]">
+              {(["flights", "hotels"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setActiveTab(tab)}
+                  className="capitalize px-[16px] py-[6px] rounded-full font-body font-medium text-[13px] transition-all duration-200"
+                  style={
+                    activeTab === tab
+                      ? { background: "#5C1828", color: "#fff", boxShadow: "0 2px 8px rgba(92,24,40,0.40)" }
+                      : { background: "transparent", color: "rgba(255,255,255,0.55)" }
+                  }
+                >
+                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
+            </div>
+          )}
 
           {/* Flight-only options */}
           {activeTab === "flights" && (

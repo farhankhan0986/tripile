@@ -191,12 +191,26 @@ export default function FlightsClient() {
           </div>
 
           <h1
-            className="font-display font-semibold text-white leading-[1.05] tracking-[-0.01em] text-center mb-[4px]"
-            style={{ fontSize: "clamp(28px, 5vw, 44px)" }}
+            className="font-display font-semibold text-white leading-[0.94] tracking-[-0.025em] text-center mb-[12px]"
+            style={{ fontSize: "clamp(36px, 6vw, 72px)" }}
           >
-            Find your next flight
+            Find your{" "}
+            <em
+              className="not-italic"
+              style={{
+                background: "linear-gradient(90deg, #C9A84C 0%, #e8c97a 50%, #C9A84C 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              perfect flight.
+            </em>
           </h1>
-          <p className="font-body text-[15px] text-white/65 text-center mb-[24px]">
+         <p
+            className="font-body leading-[1.75] mb-[24px] max-w-[420px] text-center"
+            style={{ fontSize: "17px", color: "rgba(255,255,255,0.58)" }}
+          >
             Real-time fares from hundreds of airlines, with a real agent one call away.
           </p>
 
