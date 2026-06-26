@@ -130,7 +130,7 @@ function EmptyJourneys() {
           Your next adventure<br/>awaits
         </p>
         <p className="font-body text-[14px] text-warm-mid mb-[24px] max-w-[280px] leading-[1.7]">
-          Our travel agents are ready to book your perfect trip — flights, hotels, everything.
+          Our travel agents are ready to book your perfect trip - flights, hotels, everything.
         </p>
         <div className="flex flex-col sm:flex-row gap-[10px] w-full max-w-[320px]">
           <a

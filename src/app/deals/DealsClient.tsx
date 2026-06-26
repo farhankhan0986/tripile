@@ -46,7 +46,7 @@ const DEAL_CATEGORIES: {
   {
     id: "budget",
     title: "Budget Deals",
-    subtitle: "Maximum value, minimum spend — economy done right",
+    subtitle: "Maximum value, minimum spend - economy done right",
     Icon: DollarSign,
     accentColor: "#2D6A4F",
     queries: [
@@ -534,7 +534,7 @@ function CategorySection({
           </div>
         </div>
 
-        {/* Cards — horizontal scroll */}
+        {/* Cards - horizontal scroll */}
         <div className="flex gap-[14px] overflow-x-auto pb-[8px] snap-x snap-mandatory" style={{ scrollbarWidth: "none" }}>
           {loading
             ? queries.map((_, i) => <DealSkeleton key={i} />)

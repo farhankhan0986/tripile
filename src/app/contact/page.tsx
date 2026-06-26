@@ -138,34 +138,32 @@ export default function ContactPage() {
       </section>
 
       {/* ── What to expect strip ── */}
-      <div style={{ background: "#EDE0CC", borderBottom: "1px solid rgba(92,24,40,0.08)" }}>
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
-          <div className="grid grid-cols-1 sm:grid-cols-3">
-            {steps.map(({ num, title, body }, i) => (
-              <div
-                key={num}
-                className="flex items-start gap-[16px] py-[28px] px-[8px]"
-                style={{
-                  borderRight: i < steps.length - 1 ? "1px solid rgba(92,24,40,0.10)" : "none",
-                  paddingLeft: i === 0 ? "0" : "32px",
-                  paddingRight: i === steps.length - 1 ? "0" : "32px",
-                }}
-              >
-                <span
-                  className="font-display font-semibold text-[22px] leading-none shrink-0 mt-[2px]"
-                  style={{ color: "#C9A84C" }}
-                >
-                  {num}
-                </span>
-                <div>
-                  <p className="font-body font-semibold text-[14px] text-warm-dark mb-[3px]">{title}</p>
-                  <p className="font-body text-[13px] text-warm-mid leading-[1.6]">{body}</p>
-                </div>
-              </div>
-            ))}
+      <div className="bg-[#EDE0CC] border-b border-[#5C182814]">
+  <div className="max-w-[1280px] mx-auto px-6 lg:px-20">
+    <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#5C18281A]">
+      {steps.map(({ num, title, body }) => (
+        <div
+          key={num}
+          className="flex items-start gap-4 py-7 md:px-8 first:md:pl-0 last:md:pr-0"
+        >
+          <span className="shrink-0 mt-1 font-display text-[24px] font-semibold text-[#C9A84C]">
+            {num}
+          </span>
+
+          <div>
+            <h3 className="font-body text-sm font-semibold text-warm-dark">
+              {title}
+            </h3>
+
+            <p className="mt-1 text-[13px] leading-6 text-warm-mid">
+              {body}
+            </p>
           </div>
         </div>
-      </div>
+      ))}
+    </div>
+  </div>
+</div>
 
       {/* ── Main content ── */}
       <section className="py-[48px] lg:py-[96px]">

@@ -8,11 +8,12 @@ import {
 } from "lucide-react";
 
 const NAV_LINKS: { label: string; href: string }[] = [
-  { label: "Flights", href: "/flights" },
-  { label: "Hotels",  href: "/hotels"  },
-  { label: "Deals",   href: "/deals"   },
-  { label: "About",   href: "/about"   },
-  { label: "Contact", href: "/contact" },
+  { label: "Flights", href: "/flights"      },
+  { label: "Hotels",  href: "/hotels"       },
+  { label: "Deals",   href: "/deals"        },
+  // { label: "Why Us",  href: "/why-tripile"  },
+  { label: "About",   href: "/about"        },
+  { label: "Contact", href: "/contact"      },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -203,7 +204,7 @@ export default function Nav() {
           Tripile
         </a>
 
-        {/* Desktop right controls — links + actions all on the right */}
+        {/* Desktop right controls - links + actions all on the right */}
         <div className="hidden md:flex items-center gap-6">
           {NAV_LINKS.map((link) => (
             <a key={link.href} href={link.href} className={`font-body text-[14px] transition-colors duration-300 ${linkColor}`}>

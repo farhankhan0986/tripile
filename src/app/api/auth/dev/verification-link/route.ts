@@ -3,7 +3,7 @@ import { connectDB } from "@/lib/mongodb";
 import User from "@/models/User";
 
 // Returns the pending verification link for an email address.
-// Only available in development — returns 404 in production.
+// Only available in development - returns 404 in production.
 export async function GET(req: NextRequest) {
   if (process.env.NODE_ENV === "production") {
     return NextResponse.json({ error: "Not found." }, { status: 404 });

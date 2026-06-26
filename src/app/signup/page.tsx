@@ -116,7 +116,7 @@ export default function SignupPage() {
       return;
     }
 
-    // Auto sign-in after signup — then go straight to dashboard
+    // Auto sign-in after signup - then go straight to dashboard
     await signIn("credentials", { email: email.trim(), password, redirect: false });
     router.push("/dashboard");
   }

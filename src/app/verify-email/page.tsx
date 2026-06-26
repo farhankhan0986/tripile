@@ -10,7 +10,7 @@ import {
 
 const IS_DEV = process.env.NODE_ENV !== "production";
 
-// ── Dev panel — shows the clickable verification link ─────────────────────────
+// ── Dev panel - shows the clickable verification link ─────────────────────────
 
 function DevPanel({ email }: { email?: string | null }) {
   const [link, setLink]         = useState<string | null>(null);
@@ -48,7 +48,7 @@ function DevPanel({ email }: { email?: string | null }) {
         body:    JSON.stringify({ email }),
       });
       const data = await res.json();
-      if (data.alreadyVerified) { setMsg("Already verified — no new token needed."); }
+      if (data.alreadyVerified) { setMsg("Already verified - no new token needed."); }
       else if (data.success)    { await fetchLink(); }
       else                      { setMsg(data.error ?? "Failed to generate link."); }
     } catch {
@@ -81,7 +81,7 @@ function DevPanel({ email }: { email?: string | null }) {
       >
         <Terminal size={13} style={{ color: "#C9A84C" }} />
         <span className="font-body font-semibold text-[11px] uppercase tracking-[0.10em]" style={{ color: "#C9A84C" }}>
-          Dev mode — verification link
+          Dev mode - verification link
         </span>
         <button
           type="button"
@@ -108,7 +108,7 @@ function DevPanel({ email }: { email?: string | null }) {
           <p className="font-body text-[12px]" style={{ color: "#A89282" }}>{msg}</p>
         )}
 
-        {/* No token in DB — offer to generate one */}
+        {/* No token in DB - offer to generate one */}
         {noToken && (
           <button
             type="button"
@@ -126,7 +126,7 @@ function DevPanel({ email }: { email?: string | null }) {
         {!loading && !resending && link && (
           <div className="flex flex-col gap-[10px]">
             <p className="font-body text-[11px]" style={{ color: "#A89282" }}>
-              Click the link below — this simulates clicking the link from your email:
+              Click the link below - this simulates clicking the link from your email:
             </p>
             <div
               className="flex items-center gap-[8px] rounded-[8px] px-[12px] py-[9px]"

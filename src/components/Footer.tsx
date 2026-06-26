@@ -12,8 +12,7 @@ const bookLinks = [
 const companyLinks = [
   { label: "About Us", href: "/about" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Support", href: "/support" },
-  { label: "How It Works", href: "/how-it-works" },
+  { label: "Support", href: "/support" }
 ];
 
 const legalLinks = [
@@ -21,6 +20,11 @@ const legalLinks = [
   { label: "Terms of Service", href: "/terms" },
   { label: "FAQ", href: "/faq" },
 ];
+
+const support =[
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "Why Tripile", href: "/why-tripile" },
+]
 
 function ColHeading({ children }: { children: string }) {
   return (
@@ -69,7 +73,7 @@ export default function Footer() {
             </a>
             <p className="font-body text-[14px] text-white/55 leading-[1.7] mb-[32px] max-w-[280px]">
               Real people. Real experience. We've been booking travel that matters
-              for over 22 years  one call at a time.
+              for over 4+ years  one call at a time.
             </p>
 
             {/* Contact details */}
@@ -155,9 +159,9 @@ export default function Footer() {
 
           {/* Col 4  Legal */}
           <div>
-            <ColHeading>Legal</ColHeading>
+            <ColHeading>Support</ColHeading>
             <ul className="flex flex-col gap-[14px]">
-              {legalLinks.map(({ label, href }) => (
+              {support.map(({ label, href }) => (
                 <NavLink key={label} href={href}>{label}</NavLink>
               ))}
             </ul>
