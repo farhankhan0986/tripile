@@ -105,9 +105,9 @@ export default function Hero({ activeTab, setActiveTab }: HeroProps) {
           style={{ opacity: 0.5 }}
         >
           {[
-            { value: "150k+", label: "travelers" },
+            { value: "30k+",  label: "trips booked" },
             { value: "4+ yrs", label: "experience" },
-            { value: "4.97 ★", label: "rating" },
+            { value: "4.53 ★", label: "rating" },
           ].map(({ value, label }, i) => (
             <span key={label} className="flex items-baseline gap-[6px]">
               {i > 0 && (

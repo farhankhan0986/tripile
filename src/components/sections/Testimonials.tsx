@@ -97,7 +97,7 @@ export default function Testimonials() {
                 ))}
               </div>
               <p className="font-body text-[13px] text-warm-mid">
-                <span className="font-medium text-warm-dark">4.97</span> · 2,400+ verified reviews
+                <span className="font-medium text-warm-dark">4.53</span> · 2,100+ verified reviews
               </p>
             </div>
           </div>

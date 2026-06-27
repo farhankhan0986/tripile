@@ -3,8 +3,8 @@
 import { Phone, ShieldCheck, Clock3, MapPin, Star, ArrowRight, Sparkles } from "lucide-react";
 
 const STATS = [
-  { value: "48k+", label: "Trips booked"  },
-  { value: "4.97", label: "Avg. rating"   },
+  { value: "30k+", label: "Trips booked"  },
+  { value: "4.53", label: "Avg. rating"   },
   { value: "24/7", label: "Live support"  },
 ];
 
@@ -170,7 +170,7 @@ export default function WhyTripile() {
                 boxShadow: "0 6px 24px rgba(92,24,40,0.35)",
               }}
             >
-              <span className="font-display font-semibold text-[30px] text-white leading-none">48k+</span>
+              <span className="font-display font-semibold text-[30px] text-white leading-none">30k+</span>
               <span className="font-body text-[10px] uppercase tracking-[0.08em]" style={{ color: "rgba(255,255,255,0.65)" }}>
                 Happy travelers
               </span>

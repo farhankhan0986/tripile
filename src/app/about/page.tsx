@@ -5,8 +5,16 @@ import Footer from "@/components/Footer";
 import { Shield, Phone, Award, Users, Clock, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us - Tripile",
-  description: "4+ years helping travelers over 50 see the world with confidence.",
+  title: "About Tripile | Premium Travel Agency Since 2022",
+  description:
+    "Tripile is a BBB A+ rated US travel agency founded in 2022. Rated 4.53 stars from 2,100+ reviews. We specialize in travel for the 50+ with licensed agents and no hidden fees.",
+  openGraph: {
+    title: "About Tripile | Premium Travel Agency Since 2022",
+    description:
+      "Founded in 2022, BBB A+ rated, 4.53 stars, 2,100+ reviews. Licensed agents specializing in travel for Americans 50 and older.",
+    url: "https://tripile.vercel.app/about",
+  },
+  alternates: { canonical: "https://tripile.vercel.app/about" },
 };
 
 const team = [
@@ -41,8 +49,8 @@ const team = [
 
 const stats = [
   { value: "4+", label: "Years in business", icon: Clock },
-  { value: "48k+", label: "Trips booked", icon: Globe },
-  { value: "4.97", label: "Average rating", icon: Award },
+  { value: "30k+", label: "Trips booked", icon: Globe },
+  { value: "4.53", label: "Average rating", icon: Award },
   { value: "12", label: "Expert agents", icon: Users },
 ];
 
@@ -68,9 +76,9 @@ const accreditations = [
   {
     badge: "BBB A+",
     org: "Better Business Bureau",
-    since: "Since 2009",
+    since: "Since 2022",
     description:
-      "Tripile has held a Better Business Bureau A+ rating for over a decade  the highest possible rating, awarded for transparency, complaint resolution, and ethical business practices.",
+      "Tripile holds a Better Business Bureau A+ rating, the highest possible, awarded for transparency, complaint resolution, and ethical business practices.",
   },
   {
     badge: "ASTA Member",
@@ -175,7 +183,7 @@ export default function AboutPage() {
                   not just a search engine and a credit card form.
                 </p>
                 <p>
-                  Today, with more than two decades of experience, we remain committed to that
+                  Today, we remain committed to that
                   original promise. Every trip is handled personally by a licensed agent who
                   knows your destination from firsthand experience.
                 </p>
@@ -434,8 +442,8 @@ export default function AboutPage() {
           >
             {[
               { value: "A+", label: "BBB Rating", sub: "Highest possible" },
-              { value: "48k+", label: "Trips booked", sub: "Since 2022" },
-              { value: "4.97", label: "Avg. review score", sub: "2,400+ reviews" },
+              { value: "30k+", label: "Trips booked", sub: "Since 2022" },
+              { value: "4.53", label: "Avg. review score", sub: "2,100+ reviews" },
               { value: "100%", label: "Secure checkout", sub: "256-bit TLS" },
             ].map(({ value, label, sub }) => (
               <div key={label} className="flex flex-col items-center text-center gap-[4px]">

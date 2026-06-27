@@ -162,7 +162,7 @@ export default function SignupPage() {
           className="absolute bottom-[40px] left-[48px] right-[48px] z-10 rounded-[18px] px-[28px] py-[20px] grid grid-cols-3"
           style={{ background: "rgba(255,255,255,0.10)", border: "1px solid rgba(255,255,255,0.18)", backdropFilter: "blur(12px)" }}
         >
-          {[{ value: "48k+", label: "Happy travelers" }, { value: "4.97", label: "Average rating" }, { value: "22yrs", label: "In business" }].map(({ value, label }, i) => (
+          {[{ value: "30k+", label: "Happy travelers" }, { value: "4.53", label: "Average rating" }, { value: "4+ yrs", label: "In business" }].map(({ value, label }, i) => (
             <div key={label} className="flex flex-col items-center gap-[2px]" style={{ borderRight: i < 2 ? "1px solid rgba(255,255,255,0.15)" : "none" }}>
               <p className="font-display font-semibold text-[22px] text-white leading-none">{value}</p>
               <p className="font-body text-[11px] text-white/55 uppercase tracking-[0.06em]">{label}</p>
@@ -302,7 +302,7 @@ export default function SignupPage() {
                 <Star key={i} size={12} className="text-gold-accent" fill="currentColor" />
               ))}
             </div>
-            <p className="font-body text-[12px] text-warm-mid">Rated 4.97 by 2,400+ travelers</p>
+            <p className="font-body text-[12px] text-warm-mid">Rated 4.53 by 2,100+ travelers</p>
           </div>
         </div>
       </div>

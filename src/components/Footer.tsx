@@ -6,7 +6,7 @@ const bookLinks = [
   { label: "Flights", href: "/flights" },
   { label: "Hotels", href: "/hotels" },
   { label: "Vacation Packages", href: "#" },
-  { label: "Group Travel", href: "#" },
+  { label: "Group Travel", href: "/group-travel" },
 ];
 
 const companyLinks = [
@@ -73,13 +73,13 @@ export default function Footer() {
             </a>
             <p className="font-body text-[14px] text-white/55 leading-[1.7] mb-[32px] max-w-[280px]">
               Real people. Real experience. We've been booking travel that matters
-              for over 4+ years  one call at a time.
+              for over 4 years, one call at a time.
             </p>
 
             {/* Contact details */}
             <div className="flex flex-col gap-[14px] mb-[36px]">
               <a
-                href="tel:1-800-874-7453"
+                href="tel:1-800-963-4330"
                 className="flex items-center gap-[10px] font-body text-[14px] text-white/70 hover:text-white transition-colors duration-200 group"
               >
                 <span
@@ -88,7 +88,7 @@ export default function Footer() {
                 >
                   <Phone size={14} style={{ color: "#C9A84C" }} />
                 </span>
-                1-800-TRIPILE
+                1-800-963-4330
               </a>
               <a
                 href="mailto:hello@tripile.com"
@@ -181,7 +181,7 @@ export default function Footer() {
                   </svg>
                 ))}
               </div>
-              <p className="font-body text-[11px] text-white/35">2,400+ verified reviews</p>
+              <p className="font-body text-[11px] text-white/35">2,100+ verified reviews</p>
             </div>
           </div>
 
@@ -198,7 +198,7 @@ export default function Footer() {
           <p className="font-body text-[12px] text-white/30">
             © 2026 Tripile, Inc. All rights reserved.
           </p>
-          <div className="flex items-center gap-[20px]">
+          <div className="flex items-center flex-wrap justify-center gap-[20px]">
             {legalLinks.map(({ label, href }) => (
               <a
                 key={label}
@@ -208,6 +208,14 @@ export default function Footer() {
                 {label}
               </a>
             ))}
+            <a
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-body text-[12px] text-white/30 hover:text-white/60 transition-colors duration-200"
+            >
+              Sitemap
+            </a>
           </div>
         </div>
 

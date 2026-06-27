@@ -8,12 +8,12 @@ import {
 } from "lucide-react";
 
 const NAV_LINKS: { label: string; href: string }[] = [
-  { label: "Flights", href: "/flights"      },
-  { label: "Hotels",  href: "/hotels"       },
-  { label: "Deals",   href: "/deals"        },
-  // { label: "Why Us",  href: "/why-tripile"  },
-  { label: "About",   href: "/about"        },
-  { label: "Contact", href: "/contact"      },
+  { label: "Flights", href: "/flights"       },
+  { label: "Hotels",  href: "/hotels"        },
+  { label: "Deals",   href: "/deals"         },
+  { label: "Groups",  href: "/group-travel"  },
+  { label: "About",   href: "/about"         },
+  { label: "Contact", href: "/contact"       },
 ];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────

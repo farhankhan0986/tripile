@@ -536,7 +536,7 @@ export default function Destinations() {
               ))}
             </div>
             <p className="font-body text-[13px] text-warm-mid">
-              <span className="font-semibold text-warm-dark">48,000+</span> trips booked  every one by a real agent
+              <span className="font-semibold text-warm-dark">30,000+</span> trips booked, every one by a real agent
             </p>
           </div>
 
@@ -581,12 +581,12 @@ export default function Destinations() {
               />
 
               {/* Right edge fade (bleeds into right panel) */}
-              <div
+              {/* <div
                 className="absolute inset-y-0 right-0 w-[60px] hidden sm:block"
                 style={{
                   background: "linear-gradient(to right, transparent, #FAF7F2)",
                 }}
-              />
+              /> */}
 
               {/* Close button */}
               <button

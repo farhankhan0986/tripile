@@ -10,14 +10,14 @@ import {
 export const metadata: Metadata = {
   title: "Why Book With Tripile | Expert Travel Agents",
   description:
-    "Discover why 48,000+ travelers choose Tripile: personal agents, price-match guarantee, 24/7 support, and curated experiences you won't find on any algorithm.",
+    "Discover why 30,000+ travelers choose Tripile: expert travel agents, price-match guarantee, 24/7 support, and curated experiences you won't find on any algorithm.",
 };
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: "48k+",  label: "Trips booked"      },
-  { value: "4.97",  label: "Average rating"     },
+  { value: "30k+",  label: "Trips booked"      },
+  { value: "4.53",  label: "Average rating"     },
   { value: "24/7",  label: "Agent availability" },
   { value: "4+",    label: "Years of expertise" },
 ];
@@ -233,7 +233,7 @@ export default function WhyTripilePage() {
           <div className="mb-[52px]">
             <p className="font-body text-[11px] uppercase tracking-[0.12em] text-warm-mid mb-[14px]">What sets us apart</p>
             <h2 className="font-display font-semibold text-warm-dark leading-[1.05]" style={{ fontSize: "clamp(28px, 4vw, 48px)" }}>
-              Six reasons 48,000+ travelers<br className="hidden lg:block" /> book with us
+              Six reasons 30,000+ travelers<br className="hidden lg:block" /> choose us over booking alone
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[16px]">
